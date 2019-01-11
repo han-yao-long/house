@@ -1,0 +1,252 @@
+/* 公共demo */
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+ul,
+li,
+a,
+dl,
+dd,
+dt,
+p {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+/* 清除浮动 */
+
+.clearfix:after {
+    content: "";
+    height: 0;
+    line-height: 0;
+    display: block;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {
+    zoom: 1
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+html,
+body {
+    width: 100%;
+    overflow-x: hidden
+}
+
+.haicao {
+    width: 100%;
+}
+
+.clear-margin-right {
+    margin-right: 0 !important
+}
+
+/* 公共部分结束 */
+
+@media (min-width:1920px) {
+    html {
+        font-size: 100px;
+        background: #f8f8f8
+    }
+}
+
+/* 最大的宽度 max-width = 1200px */
+
+@media (max-width:1920px) {
+    html {
+        font-size: 5.20833vw;
+        background: #f8f8f8
+    }
+}
+
+nav {
+    width: 100%;
+    background: rgba(10, 10, 10, 1);
+    color: #fff;
+    font-size: .24rem;
+    .nav-body {
+        width: 12rem;
+        height: 1.2rem;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .body-1 {
+            font-size: .36rem;
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            img {
+                width: .82rem;
+                height: .82rem;
+            }
+            span {
+                color: #fff;
+            }
+        }
+        ul {
+            display: flex;
+            align-items: center;
+            li {
+                height: .56rem;
+                padding: 0 .3rem 0;
+                color: #C5C5C5;
+                text-align: center;
+                line-height: .56rem;
+                margin-right: .32rem;
+                font-size: .3rem;
+            }
+            .active {
+                background: #FFC700;
+                border-radius: .28rem .28rem;
+                color: #000
+            }
+        }
+    }
+}
+
+.banner {
+    width: 100%;
+    height: 7rem;
+    background: url('./../images/zx-bj.png') no-repeat center;
+    background-size: 100% 100%;
+}
+
+.bodys {
+    width: 100%;
+    margin-top: -5rem;
+    .zx-babys {
+        width: 3.7rem;
+        height: 3.8rem;
+        margin: 0 auto;
+        background: url('./../images/zx-baby.png') no-repeat center;
+        background-size: 100% 100%;
+        position: relative;
+        .zx-circle2 {
+            position: absolute;
+             right:-.3rem;
+             bottom:1rem;
+             z-index: 999;
+        }
+        .zx-circle3 {
+            position: absolute;
+             left:-.3rem;
+             bottom:1rem;
+             z-index: 999;
+        }
+    }
+    .list {
+        width: 16.5rem;
+        min-height: 8rem;
+        margin: -1.5rem auto 0;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        .ul1 {
+            width: 3rem;
+            margin-right: .2rem;
+            background: linear-gradient(145deg, rgba(255, 78, 0, 1), rgba(255, 160, 0, 1), rgba(255, 210, 0, 1));
+            border: 1px solid rgba(255, 255, 255, 1);
+        }
+        .ul2 {
+            width: 13.12rem;
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0px 26px 58px 0px rgba(224, 224, 224, 0.73);
+        }
+    }
+}
+.footer{
+    width: 100%;
+    height: 2.5rem;
+    background: url('./../images/zx-bottom.png') no-repeat center;
+    background-size: 100% 100%;
+}
+/*底部*/
+
+.haicao .bottom {
+    width: 100%;
+    background: #1a1c23;
+}
+
+.haicao .bottom ul {
+    width: 13rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 0.66rem;
+    margin: 0 auto
+}
+
+.haicao .bottom ul li {
+    list-style: none;
+    font-size: 0.18rem;
+    padding-left: 0.1rem;
+    color: #fff;
+    height: 0.66rem;
+    line-height: 0.66rem;
+    margin-right: 0.2rem;
+    float: left;
+    position: relative;
+}
+
+.haicao .bottom ul li img {
+    width: 0.16rem;
+    height: 0.16rem;
+    ;
+    position: absolute;
+    top: 50%;
+    left: -0.02rem;
+    transform: translateY(-70%)
+}
+
+.outSideFir {
+    width: 100%;
+}
+
+.outSideFir dl {
+    width: 100%;
+}
+
+.outSideFir dl dt {
+    font-size: 18px;
+    margin: 5px 0 5px 120px;
+    cursor: pointer;
+}
+
+.outSideFir dl dd {
+    display: flex;
+    margin: 0 0 10px 120px
+}
+
+.outSideFir dl dd a {
+    flex: 1;
+    font-size: 16px;
+    color: #555;
+    text-decoration: none;
+}
+
+/* 津公安备网下标 */
+
+/* #gongan {
+    position: relative
+  }
+  #gongan img {
+    position: absolute;
+    right: 0 !important;
+    top:0 !important
+  } */

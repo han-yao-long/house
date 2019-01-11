@@ -1,0 +1,171 @@
+.breathe-btn1 {
+    z-index: 500;
+	width:20px;
+	height:20px;
+	margin:40px auto;
+	line-height:40px;
+	/*border:1px solid #2b92d4;*/
+	border-radius:50% 50%;
+	color:#fff;
+	font-size:20px;
+	text-align:center;
+	background-image:-webkit-gradient(linear,left top,left bottom,from(#dcf7ce),to(#6dde06));
+	-webkit-animation-timing-function:ease-in-out;
+	-webkit-animation-name:breathe1;
+	-webkit-animation-duration:500ms;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-direction:alternate;
+}
+@-webkit-keyframes breathe1 {
+	0% {
+	opacity:.2;
+	box-shadow:0 1px 2px rgba(255,255,255,1);
+}
+100% {
+	opacity:1;
+	/*border:1px solid rgba(145,231,106,1);*/
+	box-shadow:0 1px 20px rgba(109,222,6,1);
+}
+}
+
+.breathe-btn2 {
+	position:absolute;
+    top:321px;
+    left:350px;
+    z-index: 500;
+	width:46px;
+	height:46px;
+	margin:40px auto;
+	line-height:46px;
+	/*border:1px solid #2b92d4;*/
+	border-radius:50% 50%;
+	color:#fff;
+	font-size:20px;
+	text-align:center;
+		background-image:-webkit-gradient(linear,left top,left bottom,from(#dcf7ce),to(#6dde06));
+	-webkit-animation-timing-function:ease-in-out;
+	-webkit-animation-name:breathe1;
+	-webkit-animation-duration:500ms;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-direction:alternate;
+}
+
+.breathe-btn3 {
+	position:absolute;
+    top:76px;
+    left:809px;
+    z-index: 500;
+	width:20px;
+	height:20px;
+	margin:40px auto;
+	line-height:40px;
+	/*border:1px solid #2b92d4;*/
+	border-radius:50% 50%;
+	color:#fff;
+	font-size:20px;
+	text-align:center;
+	background-image:-webkit-gradient(linear,left top,left bottom,from(#ffe0cc),to(#f37801));
+	-webkit-animation-timing-function:ease-in-out;
+	-webkit-animation-name:breathe3;
+	-webkit-animation-duration:500ms;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-direction:alternate;
+}
+.breathe-btn4 {
+    z-index: 500;
+	width:20px;
+	height:20px;
+	margin:40px auto;
+	line-height:40px;
+	/*border:1px solid #2b92d4;*/
+	border-radius:50% 50%;
+	color:#fff;
+	font-size:20px;
+	text-align:center;
+	background-image:-webkit-gradient(linear,left top,left bottom,from(#ffe0cc),to(#f37801));
+	-webkit-animation-timing-function:ease-in-out;
+	-webkit-animation-name:breathe3;
+	-webkit-animation-duration:500ms;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-direction:alternate;
+}
+@-webkit-keyframes breathe3 {
+	0% {
+	opacity:.2;
+	box-shadow:0 1px 2px rgba(253,227,204,1);
+}
+100% {
+	opacity:1;
+	/*border:1px solid rgba(145,231,106,1);*/
+	box-shadow:0 1px 20px rgba(246,120,1,1);
+}
+}
+.breathe-btn5 {
+    z-index: 500;
+	width:20px;
+	height:20px;
+	/*margin:20px auto;*/
+	line-height:20px;
+	/*border:1px solid #2b92d4;*/
+	border-radius:50% 50%;
+	color:#fff;
+	font-size:20px;
+	text-align:center;
+	background-image:-webkit-gradient(linear,left top,left bottom,from(#ffe0cc),to(#f7a866));
+	-webkit-animation-timing-function:ease-in-out;
+	-webkit-animation-name:breathe3;
+	-webkit-animation-duration:500ms;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-direction:alternate;
+}
+
+.breathe-btn6 {
+	position:absolute;
+    right:544px;
+    bottom:122px;
+    z-index: 500;
+	width:36px;
+	height:36px;
+	margin:40px auto;
+	line-height:36px;
+	/*border:1px solid #2b92d4;*/
+	border-radius:50% 50%;
+	color:#fff;
+	font-size:20px;
+	text-align:center;
+	background-image:-webkit-gradient(linear,left top,left bottom,from(#fbd2d6),to(#f67f7b));
+	-webkit-animation-timing-function:ease-in-out;
+	-webkit-animation-name:breathe6;
+	-webkit-animation-duration:500ms;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-direction:alternate;
+}
+@-webkit-keyframes breathe6 {
+	0% {
+	opacity:.2;
+	box-shadow:0 1px 2px rgba(253,215,211,1);
+}
+100% {
+	opacity:1;
+	/*border:1px solid rgba(145,231,106,1);*/
+	box-shadow:0 1px 20px rgba(245,126,125,1);
+}
+}
+
+/* //红包动画 */
+@keyframes donghua {
+	from {
+		width: 60px;
+		height: 60px;
+	    transform: translate(0,0)
+	}	
+	to {
+		width: 330px;
+		height: 270px;
+		transform: translate(0px,140px)
+	}
+}
+.hover {
+	animation: 1s ease-in  donghua forwards;
+	 /* background-color: green */
+}

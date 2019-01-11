@@ -1,0 +1,221 @@
+*,h1,h2,h3,h4,h5,ul,li,a{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-decoration:none;
+}
+html {
+  font-size:13.3333vw !important
+}
+html,body{
+  height: auto;
+  width: 100%;
+}
+.enjoy{
+ position: relative;
+ height: auto;
+}
+.enjoy header{
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top:0;
+  z-index: 1000;
+}
+.enjoy header h1{
+  height: 1.1rem;
+  width: 100%;
+  background: #000;
+  text-align: center;
+  line-height: 1.1rem;
+  color:#fff;
+  font-size:0.35rem;
+}
+.enjoy .banner {
+  width: 7.5rem;
+  height: 4.4rem;
+  background: url('../images/1.jpg') no-repeat center;
+  background-size: 100% 100% ; 
+}
+/* 招聘内容 */
+.body {
+  width: 100%;
+  margin:0.65rem auto 0 ;
+  }
+.body #box {
+ width: 7.1rem;
+ margin:0 auto;
+ position: relative;
+}
+.body #box .ul1 {
+ width: 100%;
+ height: 0.7rem;
+ background: #000;
+ display: flex;
+ justify-content:space-around
+}
+.body #box .ul1 li{
+ height: 0.7rem;
+ position: relative;
+ /* flex: 1 */
+}
+.body #box .ul1 li a {
+ display: block;
+ color: #fff;
+ height: 0.7rem;
+ font-size: 0.22rem;
+ line-height: 0.7rem;
+ text-align: center;
+ width: 100%;
+ height: 0.5rem;
+ text-decoration:none;
+
+ box-sizing: border-box;
+}
+.body #box .ul2 {
+ width: 100%;
+ background: #fff;
+ padding-bottom:.8rem;
+ position: relative;
+ box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(253,165,32,0.19);
+ min-height: 11rem;
+}
+.body #box .ul2 li #oul_bodys {
+  padding: 0.5rem;
+  box-sizing: border-box;
+  display: block;
+  font-size: 0.2rem;
+  margin-bottom: 0.6rem
+
+}
+.body #box .ul2 li #oul_bodys li {
+  width: 100%;
+  height: auto
+}
+.body #box .ul2 li #oul_bodys li h5 {
+  margin-top: 0.4rem;
+   font-size: 0.22rem;
+   font-weight: 600;
+   text-align: left;
+   height: 0.38rem;
+   line-height: 0.38rem;
+   border-bottom:0.04rem solid #ffd21c;
+   display: inline-block;
+   padding-right: 0.2rem;
+   position: relative;
+   top:0
+}
+.body #box .ul2 li #oul_bodys li dl {
+  width:100%;
+  border-top: 0.01rem solid #202127;
+  margin-top:-1px;
+  overflow: hidden;
+}
+.body #box .ul2 li #oul_bodys li dl dt {
+  margin:0.22rem 0 0rem 0;
+  height: 0.28rem;
+  font-size: 0.20rem;
+  font-weight: 600
+}
+.body #box .ul2 li #oul_bodys li dl dd p{
+  line-height: 0.4rem;
+  font-size: 0.20rem;
+  margin: 0.1rem 0;
+  color: #666
+
+}
+/* 投递邮箱 */
+.email {
+  width: 4.7rem;
+  height: 0.5rem;
+  background: #ffd21c;
+  position: absolute;
+  bottom: .8rem;
+  left: -0.1rem;
+  font-size: 0.18rem;
+  line-height: 0.5rem;
+  text-align: center;
+  z-index: 100;
+}
+/* 最底部 */
+.enjoy .dibu {
+  width:100%;
+  background: #000;
+  position: absolute;
+  bottom: -1.2rem;
+  left:0;
+  margin-top:0.2rem
+}
+
+.enjoy .dibu .bottom {
+  width: 100%;
+  margin: 0 auto;
+  position: relative
+      /* display: flex; */
+}
+
+.enjoy .dibu .bottom ul {
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: space-around;
+  align-items: center;
+ 
+}
+.enjoy .dibu .bottom ul li {
+  font-size: 0.12rem;
+  color: #fff;
+  text-align: center;
+ 
+}
+.enjoy .dibu .bottom ul li .jing{
+  width: 0.18rem;
+  height: 0.18rem;
+  vertical-align:middle;
+}
+.back {
+  width: 0.3rem;
+  height: 0.4rem;
+  background: url('../images/back.png') no-repeat center;
+  background-size: 100% 100%;
+  position: fixed;
+  left: 0.3rem;
+  top:0.3rem;
+ 
+}
+.active{
+  color: #f8bd00 !important;
+  font-weight: 600
+}
+.sanjiao {
+  border-top: 0.2rem solid #000;
+  border-right:0.2rem solid transparent;
+  border-bottom:0.2rem solid transparent;
+  border-left:0.2rem solid transparent;
+  position: absolute;
+  bottom: -0.3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+
+}
+#banquan{
+  width:0.3rem;
+  height: .3rem;
+  position: relative;
+  left: 0;
+  top:5%;
+  transform: translateY(20%)
+
+}
+li .li-jing{
+  width: .2rem;
+  height: .2rem;
+}
+.add-footer{
+    color:#fff;
+    font-size: .12rem;
+    text-align: left;
+    width: 6.6rem;
+    margin: 0 auto;
+    padding: .1rem 0;
+}

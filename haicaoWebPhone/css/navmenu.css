@@ -1,0 +1,302 @@
+/* 右导航 */
+.navmenu {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+.main-nav .nav-button .spanbox {
+    padding-top: 1px;
+}
+
+.main-nav .nav-button span {
+    display: block;
+    opacity: 1;
+    transition: all 0.8s;
+    background: #1878F1;
+
+}
+
+.main-nav {
+    height: 100%;
+    width: 0%;
+    top: 0;
+    right: 0;
+    position: fixed;
+    z-index: 888;
+    color: #fff;
+    transition: all 1s ease-in-out 0s;
+}
+
+.main-nav .nav-logo {
+    position: absolute;
+    z-index: 9999;
+    top: .6rem;
+    right: .9rem;
+    transition: all 1s;
+}
+
+.nav-zhezhao {
+    position: fixed;
+    z-index: 886;
+    /* top: -50rem; */
+    top: 0;
+    right: 0rem;
+    width: 100%;
+    height: 150rem;
+    background: #000;
+    opacity: 0;
+    transition: all 2s;
+    /* transform: translate(50rem,0); */
+}
+
+.nav-zhezhao.zhezhao-show {
+    opacity: 0.6;
+}
+
+.zhezhao-translate {
+    transform: translate(-10%, 0);
+    transition: all 1s ease-in-out 0s;
+}
+
+.main-nav .nav-button {
+    position: fixed;
+    z-index: 1000;
+    top: .2rem;
+    right: .2rem;
+    width: .51rem;
+    height: .36rem;
+    line-height: .66rem;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #fff;
+    /* background: red; */
+}
+
+/* .main-nav .nav-button i {
+}
+.main-nav .nav-button i.baise {
+    color: #fff;
+} */
+.main-nav .nav-button .spanbox {
+    position: relative;
+    width: .51rem;
+    height: .36rem;
+    top: 0.16rem
+        /* background: red; */
+}
+
+.main-nav .nav-button span {
+    position: absolute;
+    margin: 0;
+    display: block;
+    width: 100%;
+    height: .06rem;
+    opacity: 1;
+    transition: all 0.8s;
+    background: #fff;
+}
+
+.main-nav .nav-button span:nth-child(1) {
+    top: 0;
+    right: 0;
+}
+
+.main-nav .nav-button span:nth-child(2) {
+    top: 0;
+    right: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.main-nav .nav-button span:nth-child(3) {
+    bottom: 0;
+    right: 0;
+}
+
+/* 关闭样式 */
+.main-nav .nav-button .spanbox.to-off span.span1 {
+    transform: rotate(45deg);
+    transform-origin: 0rem .025rem;
+    transition: all 0.8s;
+    width: .46rem;
+    background: #fff
+}
+
+.main-nav .nav-button .spanbox.to-off span.span2 {
+    opacity: 0;
+    transition: all 0.8s;
+    background: #fff
+}
+
+.main-nav .nav-button .spanbox.to-off span.span3 {
+    transform: rotate(-45deg);
+    transform-origin: 0rem .025rem;
+    transition: all 0.8s;
+    width: .46rem;
+    background: #fff
+}
+
+/* 打开样式 */
+.main-nav .nav-button .spanbox.to-on span.span1 {
+    transform: rotate(0deg);
+    transform-origin: 0 .015rem;
+    transition: all 0.8s;
+}
+
+.main-nav .nav-button .spanbox.to-on span.span2 {
+    opacity: 1;
+    transition: all 0.8s;
+}
+
+.main-nav .nav-button .spanbox.to-on span.span3 {
+    transform: rotate(0deg);
+    transform-origin: 0rem .015rem;
+    transition: all 0.8s;
+}
+
+.main-nav .nav-list {
+    width: 50%;
+    position: absolute;
+    z-index: 999;
+    /* padding-left: .6rem; */
+    float: left;
+    width: 0rem;
+    min-width: 0rem;
+    height: 100%;
+    right: 0rem;
+    overflow: hidden;
+    background: #fff;
+    opacity: 0;
+    transition: all 1s ease-in-out 0s;
+}
+
+.main-nav .nav-list ul {
+    height: 70%;
+    padding-top: 1.3rem;
+    padding-bottom: 3.45rem;
+}
+
+.main-nav .nav-list li {
+    position: relative;
+    height: 0.86rem;
+    width: 15rem;
+    padding-left: 1.3rem;
+    font-size: .33rem;
+    line-height: .86rem;
+    margin-bottom: .7rem;
+    display: flex;
+    align-items: center
+}
+
+.main-nav .nav-list li .icon-logo1 {
+    width: 0.36rem;
+    height: 0.36rem;
+    background: url('../images/nav/first.png') center no-repeat;
+    background-size: 100% 100%
+}
+
+.main-nav .nav-list li .icon-logo2 {
+    width: 0.36rem;
+    height: 0.36rem;
+    background: url('../images/nav/enjoy.png') center no-repeat;
+    background-size: 100% 100%
+}
+
+.main-nav .nav-list li .icon-logo3 {
+    width: 0.36rem;
+    height: 0.36rem;
+    background: url('../images/nav/aboutUs.png') center no-repeat;
+    background-size: 100% 100%
+}
+.main-nav .nav-list li .icon-logo4 {
+    width: 0.36rem;
+    height: 0.36rem;
+    background: url('../images/nav/tolk.png') center no-repeat;
+    background-size: 100% 100%
+}
+.main-nav .nav-list li .icon-logo_1 {
+    width: 0.36rem;
+    height: 0.36rem;
+    background: url('../images/nav/first_1.png') center no-repeat;
+    background-size: 100% 100%
+}
+
+.main-nav .nav-list li .icon-logo_2 {
+    width: 0.36rem;
+    height: 0.36rem;
+    background: url('../images/nav/enjoy_1.png') center no-repeat;
+    background-size: 100% 100%
+}
+
+.main-nav .nav-list li .icon-logo_3 {
+    width: 0.36rem;
+    height: 0.36rem;
+    background: url('../images/nav/aboutUs_1.png') center no-repeat;
+    background-size: 100% 100%
+}
+
+.main-nav .nav-list li.active {
+    padding-left: 1.3rem;
+    box-sizing: border-box;
+}
+
+.main-nav .nav-list li.active a {
+    color: #FFC023;
+    text-decoration: none;
+    width: 100%;
+    margin-left: 0.2rem
+}
+
+.main-nav .nav-list li a {
+    display: block;
+    height: .86rem;
+    line-height: .86rem;
+    text-decoration: none;
+    font-size: 0.33rem;
+    margin-left: 0.2rem;
+    width: 100%;
+    color: #fff
+}
+
+.main-nav .nav-list-show {
+    width: 68%;
+    /* min-width: 600px; */
+    opacity: 1;
+    transition: all 1s ease-in-out 0s;
+    background: rgba(29, 29, 29, 1);
+    opacity: 0.96;
+}
+
+.main-nav .nav-list-hidden {
+    width: 0rem;
+    transition: all 0s ease-in-out 0s;
+}
+
+
+.main-nav .nav-list li a:hover {
+    transform: translate(.3rem, 0);
+    transition: all 1s;
+    /* animation: nav-list 1s linear 0s 1; */
+}
+
+
+.point-down {
+    position: absolute;
+    bottom: 0.4rem;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.point-down p {
+    margin: 0 auto;
+    width: 1.4rem;
+    height: 1rem;
+    background: url(../images/point-down.png) no-repeat;
+    background-size: 100% 100%;
+}

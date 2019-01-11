@@ -1,0 +1,276 @@
+*,
+h1,
+h2,
+h3,
+h4,
+h5,
+ul,
+li,
+a {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-decoration: none;
+}
+html {
+  font-size: 13.3333vw !important;
+}
+#phone header {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+}
+#phone header h1 {
+  height: 1.1rem;
+  width: 100%;
+  background: #000;
+  text-align: center;
+  line-height: 1.1rem;
+  color: #fff;
+  font-size: 0.35rem;
+}
+#phone {
+  width: 7.5rem;
+}
+#phone .body {
+  width: 100%;
+}
+#phone .body .banner {
+  width: 100%;
+  height: 9.86rem;
+  background: url('../images/sy-banner-bj.png') no-repeat center;
+  background-size: 100% 100%;
+  overflow: hidden;
+}
+#phone .body .banner .banner-1 {
+  margin: .48rem auto 0;
+  display: flex;
+  justify-content: center;
+}
+#phone .body .banner .banner-1 .banner-1-img {
+  width: 6.3rem;
+  height: 2.36rem;
+}
+#phone .body .banner .banner-2 {
+  display: flex;
+  justify-content: left;
+}
+#phone .body .banner .banner-2 .banner-1-img {
+  width: 5.1rem;
+  height: 7.5rem;
+  margin-left: 0.26rem;
+}
+#phone .body .banner .banner-3 {
+  position: absolute;
+  left: 4.2rem;
+  bottom: 1.5rem;
+}
+#phone .body .banner .banner-3 .banner-1-img {
+  width: 2.4rem;
+  height: 2.56rem;
+}
+#phone .body .banner .banner-3 .banner-2-img {
+  width: 1.6rem;
+  height: .96rem;
+  position: absolute;
+  top: -0.6rem;
+  right: -0.2rem;
+}
+#phone .body .down-btn {
+  width: 7.3rem;
+  height: 1.62rem;
+  margin: .6rem auto 0;
+  display: flex;
+  z-index: 999;
+  justify-content: center;
+}
+#phone .body .down-btn img {
+  width: 3.6rem;
+  height: 1.42rem;
+}
+#phone .body .sy-list {
+  width: 100%;
+}
+#phone .body .sy-list .sy-list-item {
+  width: 100%;
+}
+#phone .body .sy-list .sy-list-item .sy-list-top {
+  margin: 0 auto;
+  display: block;
+}
+#phone .body .sy-list .sy-list-item .sy-list-bottom {
+  width: 100%;
+  background-size: 100% 100%;
+}
+#phone .body .sy-list .list-1 .sy-list-top {
+  width: 5.28rem;
+  height: 3.2rem;
+}
+#phone .body .sy-list .list-1 .sy-list-bottom {
+  height: 9.1rem;
+  background: url('../images/list-1.png') no-repeat center;
+  background-size: 100% 100%;
+}
+#phone .body .sy-list .list-2 .sy-list-top {
+  width: 4.32rem;
+  height: 3.02rem;
+}
+#phone .body .sy-list .list-2 .sy-list-bottom {
+  height: 8.24rem;
+  background: url('../images/list-2.png') no-repeat center;
+  background-size: 100% 100%;
+}
+#phone .body .sy-list .list-3 .sy-list-top {
+  width: 4.94rem;
+  height: 3.12rem;
+}
+#phone .body .sy-list .list-3 .sy-list-bottom {
+  height: 8.22rem;
+  background: url('../images/list-3.png') no-repeat center;
+  background-size: 100% 100%;
+}
+#phone .body .sy-list .list-4 .sy-list-top {
+  width: 5.18rem;
+  height: 3.24rem;
+}
+#phone .body .sy-list .list-4 .sy-list-bottom {
+  height: 7.78rem;
+  background: url('../images/list-4.png') no-repeat center;
+  background-size: 100% 100%;
+}
+#phone .body .sy-list .list-5 .sy-list-top {
+  width: 6.72rem;
+  height: 3.04rem;
+}
+#phone .body .sy-list .list-5 .sy-list-bottom {
+  height: 7.78rem;
+  position: relative;
+}
+#phone .body .sy-list .list-5 .sy-list-bottom .b-1 {
+  width: 4.4rem;
+  height: 4.1rem;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#phone .body .sy-list .list-5 .sy-list-bottom .b-2 {
+  width: 3.8rem;
+  height: 3.42rem;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+#phone .body .sy-list .list-5 .sy-list-bottom .b-3 {
+  width: 3.8rem;
+  height: 3.42rem;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+#phone .body .code {
+  width: 100%;
+  height: 4.8rem;
+  background: url('../images/sy-footer-bj.png') no-repeat center;
+  background-size: 100% 100%;
+}
+#phone .body .code .code-body {
+  width: 6.9rem;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+#phone .body .code .code-body img {
+  width: 2rem;
+  height: 2.44rem;
+}
+#phone footer {
+  width: 100%;
+  position: relative;
+}
+#phone footer .dibu {
+  width: 100%;
+  background: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* 最底部 */
+/*底部*/
+#phone footer .dibu .bottom {
+  width: 100%;
+  margin: 0 auto;
+  position: relative /* display: flex; */;
+}
+#phone footer .dibu .bottom ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+#phone footer .dibu .bottom ul li {
+  font-size: 0.12rem;
+  color: #fff;
+  text-align: center;
+}
+#phone footer .dibu .bottom ul li .jing {
+  width: 0.18rem;
+  height: 0.18rem;
+  vertical-align: middle;
+}
+.outSideFir {
+  width: 100%;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  background: #ffffff;
+}
+.outSideFir dl {
+  width: 100%;
+}
+.outSideFir dl dt {
+  font-size: 0.18rem;
+  margin: 0.05rem 0 0.05rem 0.1rem;
+}
+.outSideFir dl dd {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.outSideFir dl dd a {
+  color: #555;
+  font-size: 0.16rem;
+}
+/*隐藏*/
+.vsihidden {
+  visibility: hidden;
+}
+/*显示*/
+.vsivisible {
+  visibility: visible;
+}
+#banquan {
+  width: 0.3rem;
+  height: .3rem;
+  position: relative;
+  left: 0;
+  top: 5%;
+  transform: translateY(20%);
+}
+li .li-jing {
+  width: .2rem;
+  height: .2rem;
+}
+.add-footer {
+  color: #fff;
+  font-size: .12rem;
+  text-align: left;
+  width: 6.6rem;
+  margin: 0 auto;
+  padding: .1rem 0;
+}
