@@ -1,0 +1,185 @@
+<template>
+  <div id="daojishi">
+    <div class="timebox">
+      <span>{{days}}</span>天
+    </div>
+    <div class="btns" @click="closeAlsert"></div>
+    <div v-show="isAlert" class="mask" @click="closeAlsert">
+      <div class="alerts" @click.stop>
+        <span class="close" @click="closeAlsert"></span>
+        <img class="tit" src="@/assets/countDown/tit.png" alt>
+        <div class="texts">
+          <p class="item-tit">活动时间：</p>
+          <p class="item-disc">2019年1月20日08:30-2019年2月28日24:00</p>
+          <p class="item-disc">活动区域</p>
+          <p class="item-tit">大陆地区（不含港澳台）</p>
+          <p class="item-tit">夺金步骤：</p>
+          <p class="item-tit">1、参与方式：</p>
+          <p class="item-disc">@伊利各销售大区的业务员，只需每日上传优酸乳堆头剥离前后对比照片，即有机会成为终极锦鲤宝宝。</p>
+          <p class="item-tit">2、活动说明：</p>
+          <p class="item-disc">每日上传3组优酸乳堆头剥离前后对比照片，即可获得抽奖机会；持续参与活动的业务员，既有机会夺取终极锦鲤宝宝-现金大奖。</p>
+          <p class="item-tit">好运等级：</p>
+          <p class="item-disc">幸运锦鲤宝宝：神秘好礼</p>
+          <p class="item-disc">周锦鲤宝宝：2888元现金</p>
+          <p class="item-disc">终极锦鲤宝宝：5888元现金</p>
+          <p class="item-bottoms">
+            <span>备注：</span>每天下午8点，系统会及时更新周锦鲤宝宝排名和终极锦鲤宝宝排名哦~
+          </p>
+          <p class="item-bottoms">
+            <span>活动期间，可不要有作弊行为哦~各销售大区的任何一名锦鲤宝宝如有作弊行为，都将取消夺金资格。</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+import { wxCharts } from "@/utils/common";
+export default {
+  data() {
+    return {
+      isAlert: false,
+      days: "",
+      share: {
+        title: "pick优酸乳 动手赢好运",
+        disc:
+          "每日上传3组优酸乳堆头剥离前后对比照片，即可获得抽奖机会；持续参与活动的业务员，既有机会夺取终极锦鲤宝宝-现金大奖",
+        imgUrl: `http://www.redview.com.cn/haicao_wx/dist/static/logo.png`,
+        url:''
+      }
+    };
+  },
+  methods: {
+    initColor() {
+      $("body").css({ background: "#6e3599" });
+    },
+    closeAlsert() {
+      if (this.isAlert) {
+        this.isAlert = false;
+      } else {
+        this.isAlert = true;
+      }
+    },
+    // 倒计时
+    ShowCountDown(year, month, day, divname) {
+      let that = this;
+      let now = new Date();
+      let endDate = new Date(2019, 0, 20, 8, 30, 0);
+      console.log(endDate);
+      let leftTime = endDate.getTime() - now.getTime();
+      that.days = parseInt(leftTime / 1000 / 60 / 60 / 24, 10); //计算剩余的天数
+      setInterval(function() {
+        let now = new Date();
+        let endDate = new Date(2019, 0, 20, 8, 30, 0);
+        let leftTime = endDate.getTime() - now.getTime();
+        that.days = parseInt(leftTime / 1000 / 60 / 60 / 24, 10); //计算剩余的天数
+      }, 1000);
+    },
+    // 微信分享获取豆腐块
+    // 微信分享sdk配置
+    wchatShare() {
+      wxCharts(
+        this.share.title,
+        this.share.disc,
+        this.share.url,
+        this.share.imgUrl
+      );
+    }
+  },
+  mounted() {
+    this.initColor();
+    this.ShowCountDown();
+    // this.wchatShare()
+  }
+};
+</script>
+
+<style lang="less" scoped>
+p {
+  margin: 0;
+  padding: 0;
+}
+#daojishi {
+  font-family: TSZT;
+  width: 7.5rem;
+  height: 13.34rem;
+  background: url("./../../assets/countDown/countDownAll.jpg") no-repeat center;
+  background-size: 100% 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  .timebox {
+    width: 4rem;
+    height: 2.4rem;
+    margin: 6.8rem auto 0;
+    font-size: 1.5rem;
+    color: #d70290;
+    text-align: center;
+    line-height: 2.4rem;
+    span {
+      font-size: 1.8rem;
+    }
+  }
+  .btns {
+    width: 2.48rem;
+    height: 0.94rem;
+    background: url("./../../assets/countDown/btn.png") no-repeat center;
+    background-size: 100% 100%;
+    margin: 1rem auto 0;
+  }
+  .mask {
+    width: 100%;
+    height: 100vh;
+    background: rgba(000, 000, 000, 0.6);
+    position: absolute;
+    left: 0;
+    top: 0;
+    .close {
+      position: absolute;
+      top: 0.24rem;
+      right: 0.24rem;
+      width: 0.3rem;
+      height: 0.3rem;
+      background: url("./../../assets/countDown/close.png") no-repeat center;
+      background-size: 100% 100%;
+    }
+    .alerts {
+      width: 6.1rem;
+      height: 10rem;
+      position: absolute;
+      left: 50%;
+      top: 1.73rem;
+      transform: translateX(-50%);
+      background: url("./../../assets/countDown/msg.png") no-repeat center;
+      background-size: 100% 100%;
+      .tit {
+        width: 4.24rem;
+        height: 0.7rem;
+        display: block;
+        margin: 0.6rem auto 0;
+      }
+      .texts {
+        width: 5.1rem;
+        font-size: 0.22rem;
+        line-height: 0.36rem;
+        margin: 0.2rem auto 0;
+        .item-tit {
+          color: #fdd000;
+        }
+        .item-disc {
+          color: #fff;
+        }
+      }
+      .item-bottoms {
+        color: #fff;
+        font-size: 0.16rem;
+        line-height: .28rem;
+        span {
+          color: #fdd000;
+        }
+      }
+    }
+  }
+}
+</style>
+
