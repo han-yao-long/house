@@ -31,23 +31,40 @@
         </div>
       </div>
     </div>
+    <!-- <aplayer autoplay :music="musicList"></aplayer> -->
+    <audio preload="auto" ref="audios">
+      <source :src="audioVoice" type="audio/mpeg">
+    </audio>
   </div>
 </template>
 <script>
 import { wxCharts } from "@/utils/common";
+import {MessageBox } from "mint-ui";
+// import aplayer from "vue-aplayer";
 export default {
   data() {
     return {
       isAlert: false,
       days: "",
+      musicList: {
+        title: "youkao100",
+        author: "youkao100",
+        url: "./../../../static/x1.mp3",
+        pic: "",
+        lrc: "[00:00.00]lrc here\n[00:01.00]aplayer"
+      },
+      audioVoice: require("./../../../static/x1.mp3"),
       share: {
         title: "pick优酸乳 动手赢好运",
         disc:
           "每日上传3组优酸乳堆头剥离前后对比照片，即可获得抽奖机会；持续参与活动的业务员，既有机会夺取终极锦鲤宝宝-现金大奖",
         imgUrl: `http://www.redview.com.cn/haicao_wx/dist/static/logo.png`,
-        url:''
+        url: ""
       }
     };
+  },
+  components: {
+    // aplayer
   },
   methods: {
     initColor() {
@@ -59,6 +76,9 @@ export default {
       } else {
         this.isAlert = true;
       }
+    },
+    plays() {
+      this.$refs["audios"].play();
     },
     // 倒计时
     ShowCountDown(year, month, day, divname) {
@@ -89,7 +109,21 @@ export default {
   mounted() {
     this.initColor();
     this.ShowCountDown();
-    // this.wchatShare()
+    let that = this;
+    document.addEventListener(
+      "WeixinJSBridgeReady",
+      function() {
+        that.$refs["audios"].play();
+      },
+      false
+    );
+  },
+  created() {
+    let sUserAgent = navigator.userAgent.toLowerCase();
+    let isWechat = sUserAgent.indexOf("micromessenger") != -1;
+    if(!isWechat){
+          MessageBox.alert("请在微信内打开", "提示");
+    }
   }
 };
 </script>
@@ -102,7 +136,8 @@ p {
 #daojishi {
   font-family: TSZT;
   width: 7.5rem;
-  height: 13.34rem;
+  height: calc(100vh);
+// height: 13.34rem;
   background: url("./../../assets/countDown/countDownAll.jpg") no-repeat center;
   background-size: 100% 100%;
   margin: 0 auto;
@@ -111,7 +146,7 @@ p {
   .timebox {
     width: 4rem;
     height: 2.4rem;
-    margin: 6.8rem auto 0;
+    margin: 6rem auto 0;
     font-size: 1.5rem;
     color: #d70290;
     text-align: center;
@@ -129,17 +164,17 @@ p {
   }
   .mask {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background: rgba(000, 000, 000, 0.6);
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     .close {
       position: absolute;
       top: 0.24rem;
       right: 0.24rem;
-      width: 0.3rem;
-      height: 0.3rem;
+      width: 0.5rem;
+      height: 0.5rem;
       background: url("./../../assets/countDown/close.png") no-repeat center;
       background-size: 100% 100%;
     }
@@ -148,7 +183,7 @@ p {
       height: 10rem;
       position: absolute;
       left: 50%;
-      top: 1.73rem;
+      top: 1rem;
       transform: translateX(-50%);
       background: url("./../../assets/countDown/msg.png") no-repeat center;
       background-size: 100% 100%;
@@ -172,8 +207,8 @@ p {
       }
       .item-bottoms {
         color: #fff;
-        font-size: 0.16rem;
-        line-height: .28rem;
+        font-size: 0.18rem;
+        line-height: 0.28rem;
         span {
           color: #fdd000;
         }
