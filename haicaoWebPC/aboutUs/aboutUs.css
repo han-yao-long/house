@@ -105,7 +105,190 @@ nav .nav-body ul .active {
   border-radius: .28rem .28rem;
   color: #000000;
 }
+.banner {
+  height: 7.36rem;
+  background: url('../images/us-bg.png') no-repeat center;
+  background-size: 100% 100%;
+  overflow: hidden;
+}
+.banner .banners {
+  width: 100%;
+  height: 0;
+  color: #fff;
+  overflow: hidden;
+}
+.banner .banners .txt1 {
+  font-size: .5rem;
+  text-align: center;
+  line-height: .72rem;
+  margin-top: 1.5rem;
+}
+.banner .banners .txt2 {
+  font-size: .2rem;
+  line-height: .4rem;
+  text-align: center;
+  margin-top: 0.3rem;
+}
+.booss-tit {
+  width: 1.54rem;
+  height: 7.6rem;
+  background: url('../images/us-boss.png') no-repeat center;
+  background-size: 100% 100%;
+  margin: 0.86rem auto 0;
+}
+.boss {
+  width: 10.6rem;
+  height: 7.52rem;
+  margin: .66rem auto 0;
+  position: relative;
+}
+.boss .bosss {
+  width: 10.6rem;
+  height: 0;
+  overflow: hidden;
+}
+.boss .bosss .bosss2 {
+  width: 10.6rem;
+  height: 7.52rem;
+  background: url('../images/boss.png') no-repeat center;
+  background-size: 100% 100%;
+}
+.boss .bosss .bosss2 .text {
+  position: absolute;
+  left: 5.05rem;
+  top: 3.97rem;
+  width: 5rem;
+  font-size: .18rem;
+  line-height: .36rem;
+  color: #fff;
+  height: 0;
+  overflow: hidden;
+}
+.boss .bosss .bosss2 .text .tit {
+  height: .66rem;
+  text-align: left;
+  line-height: .66rem;
+  border-bottom: #F4C102 solid .02rem;
+}
+.boss .bosss .bosss2 .text .tit p {
+  font-size: .36rem;
+}
+.boss .bosss .bosss2 .text .tit p span {
+  font-size: 0.24rem;
+}
+.invister-tit {
+  width: 1.5rem;
+  height: .76rem;
+  background: url('../images/us-veste.png') no-repeat center;
+  background-size: 100% 100%;
+  margin: 0.86rem auto 0;
+}
+.invister-1 {
+  width: 12rem;
+  margin: 0 auto;
+  height: 6.19rem;
+}
+.invister-1 .invister-1s {
+  width: 12rem;
+  margin: 0 auto;
+  display: flex;
+  overflow: hidden;
+  height: 0rem;
+  justify-content: space-between;
+  position: relative;
+}
+.invister-1 .invister-1s .invister-1-1 {
+  width: 4.84rem;
+  height: 6.19rem;
+  background: url('../images/us-in-1.png') no-repeat center;
+  background-size: 100% 100%;
+  position: relative;
+}
+.invister-1 .invister-1s .invister-1-2 {
+  width: 4.84rem;
+  height: 6.19rem;
+  background: url('../images/us-in-2.png') no-repeat center;
+  background-size: 100% 100%;
+  margin-left: 2.16rem;
+}
+.invister-2 {
+  width: 16rem;
+  margin: 0 auto;
+  height: 6.19rem;
+}
+.invister-2 .invister-2s {
+  width: 16rem;
+  margin: 0 auto;
+  height: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+}
+.invister-2 .invister-2s .invister-2-1 {
+  width: 8.48rem;
+  height: 6.19rem;
+  background: url('../images/us-in-3.png') no-repeat center;
+  background-size: 100% 100%;
+}
+.invister-2 .invister-2s .invister-2-2 {
+  width: 8.48rem;
+  height: 6.19rem;
+  background: url('../images/us-in-4.png') no-repeat center;
+  background-size: 100% 100%;
+  margin-left: 0.7rem;
+}
+.invister-2 .invister-2s .invister-2-3 {
+  width: 8.48rem;
+  height: 6.19rem;
+  background: url('../images/us-in-5.png') no-repeat center;
+  background-size: 100% 100%;
+  margin-left: 0.7rem;
+}
+.invister-item {
+  position: relative;
+}
+.invister-item .text {
+  width: 3.5rem;
+  color: #fff;
+  text-align: left;
+  position: absolute;
+  left: .9rem;
+  top: 2.8rem;
+  height: 0;
+  overflow: hidden;
+}
+.invister-item .text .name {
+  font-size: .24rem;
+  line-height: .48rem;
+  font-weight: bold;
+}
+.invister-item .text .tit {
+  font-size: .18rem;
+}
+.invister-item .text .disc {
+  font-size: .16rem;
+  line-height: .24rem;
+  border-top: 0.01rem solid rgba(145, 147, 155, 0.2);
+  margin-top: .2rem;
+  padding-top: 0.1rem;
+}
+.invister-item .text .btns {
+  background: url('../images/more.png') no-repeat center;
+  background-size: 100% 100%;
+  width: .9rem;
+  height: .3rem;
+  margin-top: .1rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
 /*底部*/
+.footer-bg {
+  width: 100%;
+  height: 2.52rem;
+  background: url('../images/zx-bottom.png') no-repeat center;
+  background-size: 100% 100%;
+}
 .haicao .bottom {
   width: 100%;
   background: #1a1c23;

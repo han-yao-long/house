@@ -24,10 +24,18 @@
             <div class="nav-body">
                 <div class="body-1"><img src="./images/wxicon.png" alt=""> <span>海草公社</span></div>
                 <ul>
-                    <li class="active">首页</li>
-                    <li>招贤纳士</li>
-                    <li>关于公司</li>
-                    <li class="clear-margin-right">联系我们</li>
+                    <a href="./index.html">
+                        <li class="active">首页</li>
+                    </a>
+                    <a href="./enjoy.html">
+                        <li>招贤纳士</li>
+                    </a>
+                    <a href="./aboutUs.html">
+                        <li>关于公司</li>
+                    </a>
+                    <a href="./callme.html">
+                        <li class="clear-margin-right">联系我们</li>
+                    </a>
                 </ul>
             </div>
         </nav>
@@ -41,17 +49,19 @@
                 <img src="./images/logo.png" alt="">
             </div>
             <div class="banner-3">
-                <h3>能赚会花</h3>
-                <p>集<span>社区，电商，游戏</span>为</p>
-                <p>一体的生活消费娱乐平台</p>
-                <div class="btn">
-                    <img src="./images/iosDown.png" alt="">
-                    <img src="./images/anDown.png" alt="">
+                <div class="banner-3s">
+                    <h3>能赚会花</h3>
+                    <p>集<span>社区，电商，游戏</span>为</p>
+                    <p>一体的生活消费娱乐平台</p>
+                    <div class="btn">
+                        <img src="./images/iosDown.png" alt="">
+                        <img src="./images/anDown.png" alt="">
+                    </div>
                 </div>
             </div>
             <div class="banner-4">
-                <img class="glass-2" src="./images/glass-2.png" alt="">
-                <img class="tolk" src="./images/tolk.png" alt="">
+                <img class="glass-2" src="./images/glass-1.gif" alt="">
+                <img class="tolk" src="./images/bobo.gif" alt="">
             </div>
         </div>
         <!-- 这里是草圈 -->
@@ -63,12 +73,19 @@
                         <p class="p1">草民的生活圈 </p>
                         <p class="p2">分享生活点滴，发现价值资讯，草民的圈子很精彩</p>
                     </div>
-                    <div class="items-2"></div>
+                    <div class="items-2">
+                        <img class="leftTalk" src="./images/leftTalk.png" alt="">
+                        <img class="rightTalk" src="./images/rightTalk.png" alt="">
+                    </div>
                 </div>
             </div>
             <div class="body-2">
                 <div class="items">
-                    <div class="items-2"></div>
+                    <div class="items-2">
+                        <img class="body-2-1" src="./images/body-2-1.png" alt="">
+                        <img class="body-2-2" src="./images/body-2-2.png" alt="">
+                        <img class="body-2-3" src="./images/body-2-3.png" alt="">
+                    </div>
                     <div class="items-1">
                         <h3>海选好货</h3>
                         <p class="p1">买得多，省得多 </p>
@@ -77,21 +94,30 @@
                 </div>
             </div>
             <div class="body-3">
-                <div class="items">
-                    <div class="items-1">
-                        <h3>海拼生活</h3>
-                        <p class="p1">啥都能拼，拼多赚多 </p>
-                        <p class="p2">一起晒生活，一起淘宝贝；一起拼，一起赚……</p>
+                <div clss="body-3s">
+                    <div class="items">
+                        <div class="items-1">
+                            <h3>海拼生活</h3>
+                            <p class="p1">啥都能拼，拼多赚多 </p>
+                            <p class="p2">一起晒生活，一起淘宝贝；一起拼，一起赚……</p>
+                        </div>
+                        <div class="items-2">
+                            <img class="body-3-1" src="./images/body-3-1.png" alt="">
+                        </div>
                     </div>
-                    <div class="items-2"></div>
                 </div>
             </div>
             <div class="body-4">
                 <div class="items">
-                    <div class="items-2"></div>
+                    <div class="items-2">
+                        <img class="body-4-1" src="./images/body-4-1.png" alt="">
+                        <img class="body-4-2" src="./images/body-4-2.png" alt="">
+                        <img class="body-4-3" src="./images/body-4-3.png" alt="">
+                        <img class="body-4-4" src="./images/body-4-4.png" alt="">
+                    </div>
                     <div class="items-1">
                         <h3>奖励</h3>
-                        <p class="p1">在海草，奖励拿到你手软  </p>
+                        <p class="p1">在海草，奖励拿到你手软 </p>
                         <p class="p2">登录、分享、阅读、购物……都有价值，都有奖励</p>
                     </div>
                 </div>
@@ -154,9 +180,225 @@
     </div>
 
 </body>
+<script src="./js/anime.min.js"></script>
 <script src="./js/jquery.min.js"></script>
 <script>
-
+    let animescroll1 = anime({
+        targets: '.banner .banner-1',
+        left: '1.64rem',
+        duration: 3000,
+    });
+    let animescroll2 = anime({
+        targets: '.banner .banner-4',
+        right: '2.61rem',
+        duration: 3000,
+    });
+    // banner中间得文字
+    let animescroll31 = anime({
+        targets: '.banner .banner-3',
+        width: '5.1rem',
+        duration: 500,
+        easing: 'linear',
+        delay: 1000
+    });
+    let animescroll3 = anime({
+        targets: '.banner .banner-2 img',
+        scale: 10,
+        duration: 3000,
+        delay: 300
+    });
+    // body-1
+    let animescroll4 = anime({
+        targets: '.body-1 .items-1',
+        duration: 3000,
+        left: '2.7rem',
+        autoplay: false,
+    });
+    let animescroll5 = anime({
+        targets: '.body-1 .items-2',
+        duration: 3000,
+        right: '2rem',
+        // autoplay: false,
+    });
+    let animescroll51 = anime({
+        targets: '.body-1 .items-2 .leftTalk',
+        duration: 3000,
+        scale: 10,
+        delay: 1000,
+        autoplay: false,
+    });
+    let animescroll52 = anime({
+        targets: '.body-1 .items-2 .rightTalk',
+        duration: 3000,
+        scale: 10,
+        delay: 1000,
+        autoplay: false,
+    });
+    let animescroll6 = anime({
+        targets: '.body-2 .items-1',
+        duration: 3000,
+        left: '12rem',
+        autoplay: false,
+    });
+    // body-2
+    let animescroll7 = anime({
+        targets: '.body-2 .items-2',
+        duration: 3000,
+        left: '2rem',
+        autoplay: false,
+    });
+    let animescroll71 = anime({
+        targets: '.body-2 .items-2 .body-2-1',
+        duration: 3000,
+        scale: 10,
+        delay: 1000,
+        autoplay: false,
+    });
+    let animescroll72 = anime({
+        targets: '.body-2 .items-2 .body-2-2',
+        duration: 3000,
+        scale: 10,
+        delay: 1000,
+        autoplay: false,
+    });
+    let animescroll73 = anime({
+        targets: '.body-2 .items-2 .body-2-3',
+        duration: 3000,
+        scale: 10,
+        delay: 1000,
+        autoplay: false,
+    });
+    let animescroll8 = anime({
+        targets: '.body-3 .items-1',
+        duration: 3000,
+        left: '2.7rem',
+        autoplay: false,
+    });
+    // body-3
+    let animescroll9 = anime({
+        targets: '.body-3 .items-2',
+        duration: 3000,
+        right: '2rem',
+        autoplay: false,
+    });
+    let animescroll91 = anime({
+        targets: '.body-3 .items-2 .body-3-1',
+        duration: 3000,
+        scale: 10,
+        delay: 1000,
+        autoplay: false,
+    });
+    let animescroll10 = anime({
+        targets: '.body-4 .items-1',
+        duration: 3000,
+        left: '10rem',
+        autoplay: false,
+    });
+    // body-4
+    let animescroll11 = anime({
+        targets: '.body-4 .items-2',
+        duration: 3000,
+        left: '2rem',
+        autoplay: false,
+    });
+    let animescroll111 = anime({
+        targets: '.body-4 .items-2 .body-4-1',
+        duration: 3000,
+        scale: 10,
+        delay: 1000,
+        autoplay: false,
+    });
+    let animescroll112 = anime({
+        targets: '.body-4 .items-2 .body-4-2',
+        duration: 3000,
+        scale: 10,
+        delay: 1000,
+        autoplay: false,
+    });
+    let animescroll113 = anime({
+        targets: '.body-4 .items-2 .body-4-3',
+        duration: 3000,
+        scale: 10,
+        delay: 1000,
+        autoplay: false,
+    });
+    let animescroll114 = anime({
+        targets: '.body-4 .items-2 .body-4-4',
+        duration: 3000,
+        scale: 10,
+        delay: 1000,
+        autoplay: false,
+    });
+    let animescroll12 = anime({
+        targets: '.body-5 .items-1',
+        duration: 3000,
+        left: '1.8rem',
+        autoplay: false,
+    });
+    let animescroll13 = anime({
+        targets: '.body-5 .items-2',
+        duration: 3000,
+        right: '1.4rem',
+        autoplay: false,
+    });
+    // Add children
+    let codess = anime({
+        targets: '.twoCode .list img',
+        height: '3.2rem',
+        duration: 1000,
+        autoplay: false,
+        delay: anime.stagger(500) // increase delay by 100ms for each elements.
+    });
+    window.onscroll = function () {
+        let bodyOne = $('.body-1 .items-2').offset().top;
+        let bodyOne2 = $('.body-2 .items-2').offset().top;
+        let bodyOne3 = $('.body-3 .items-2').offset().top;
+        let bodyOne4 = $('.body-4 .items-2').offset().top;
+        let bodyOne5 = $('.body-5 .items-2').offset().top;
+        let twoCode = $('.twoCode').offset().top;
+        let scrolls = $(document).scrollTop();
+        let windowHeight = $(window).height();
+        let all = scrolls + windowHeight / 2;
+        // 草圈
+        if (bodyOne <= (scrolls + windowHeight / 2)) {
+            animescroll4.play()
+            animescroll5.play();
+            animescroll51.play()
+            animescroll52.play()
+        }
+        // 海选好
+        if (bodyOne2 <= (scrolls + windowHeight / 2)) {
+            animescroll6.play()
+            animescroll7.play()
+            animescroll71.play()
+            animescroll72.play()
+            animescroll73.play()
+        }
+        // 海拼
+        if (bodyOne3 <= (scrolls + windowHeight / 2)) {
+            animescroll8.play()
+            animescroll9.play()
+            animescroll91.play()
+        }
+        // 奖励
+        if (bodyOne4 <= (scrolls + windowHeight / 2)) {
+            animescroll10.play()
+            animescroll11.play()
+            animescroll111.play()
+            animescroll112.play()
+            animescroll113.play()
+            animescroll114.play()
+        }
+        // 猜拳卡
+        if (bodyOne5 <= (scrolls + windowHeight / 2)) {
+            animescroll12.play()
+            animescroll13.play()
+        }
+        // 二维码
+        if (twoCode <= (scrolls + windowHeight / 2)) {
+            codess.play()
+        }
+    }
 </script>
 
 </html>

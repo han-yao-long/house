@@ -33,25 +33,27 @@ html {
 }
 #phone {
   width: 7.5rem;
+  overflow: hidden;
 }
 #phone .body {
   width: 100%;
 }
 #phone .body .banner {
   width: 100%;
-  height: 9.86rem;
+  height: 11em;
   background: url('../images/sy-banner-bj.png') no-repeat center;
   background-size: 100% 100%;
   overflow: hidden;
 }
 #phone .body .banner .banner-1 {
-  margin: .48rem auto 0;
+  margin: .6rem auto ;
   display: flex;
   justify-content: center;
 }
 #phone .body .banner .banner-1 .banner-1-img {
   width: 6.3rem;
   height: 2.36rem;
+  opacity: 0;
 }
 #phone .body .banner .banner-2 {
   display: flex;
@@ -65,18 +67,23 @@ html {
 #phone .body .banner .banner-3 {
   position: absolute;
   left: 4.2rem;
-  bottom: 1.5rem;
+  bottom: 1rem;
+  height: 3.16rem;
+  width: 3.2rem;
+  overflow: hidden;
 }
 #phone .body .banner .banner-3 .banner-1-img {
   width: 2.4rem;
   height: 2.56rem;
+  margin-top: .7rem;
 }
 #phone .body .banner .banner-3 .banner-2-img {
-  width: 1.6rem;
-  height: .96rem;
+  width: 2rem;
+  height: 1.4rem;
   position: absolute;
-  top: -0.6rem;
-  right: -0.2rem;
+  top: 0rem;
+  left: 1rem;
+  opacity: 0;
 }
 #phone .body .down-btn {
   width: 7.3rem;
@@ -85,10 +92,12 @@ html {
   display: flex;
   z-index: 999;
   justify-content: center;
+  overflow: hidden;
 }
 #phone .body .down-btn img {
   width: 3.6rem;
   height: 1.42rem;
+  opacity: 0;
 }
 #phone .body .sy-list {
   width: 100%;
@@ -99,19 +108,45 @@ html {
 #phone .body .sy-list .sy-list-item .sy-list-top {
   margin: 0 auto;
   display: block;
+  opacity: 0;
 }
 #phone .body .sy-list .sy-list-item .sy-list-bottom {
-  width: 100%;
+  width: 7.5rem;
   background-size: 100% 100%;
+  position: relative;
 }
 #phone .body .sy-list .list-1 .sy-list-top {
   width: 5.28rem;
   height: 3.2rem;
+  opacity: 0;
 }
 #phone .body .sy-list .list-1 .sy-list-bottom {
   height: 9.1rem;
-  background: url('../images/list-1.png') no-repeat center;
+  width: 7.5rem;
   background-size: 100% 100%;
+  position: relative;
+  left: -7.5rem;
+}
+#phone .body .sy-list .list-1 .sy-list-bottom .list-1s {
+  width: 15.37rem;
+  height: auto;
+  position: absolute;
+  left: -5.6rem;
+  top: 0;
+}
+#phone .body .sy-list .list-1 .sy-list-bottom .list-1-item-1 {
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: 0;
+  top: 3.18rem;
+}
+#phone .body .sy-list .list-1 .sy-list-bottom .list-1-item-2 {
+  width: 0;
+  height: 0;
+  position: absolute;
+  right: 0;
+  top: 4.7rem;
 }
 #phone .body .sy-list .list-2 .sy-list-top {
   width: 4.32rem;
@@ -121,6 +156,28 @@ html {
   height: 8.24rem;
   background: url('../images/list-2.png') no-repeat center;
   background-size: 100% 100%;
+  left: 7.5rem;
+}
+#phone .body .sy-list .list-2 .sy-list-bottom .list-2-item-1 {
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: .42rem;
+  top: 2.06rem;
+}
+#phone .body .sy-list .list-2 .sy-list-bottom .list-2-item-2 {
+  width: 0;
+  height: 0;
+  position: absolute;
+  right: .22rem;
+  top: 4.08rem;
+}
+#phone .body .sy-list .list-2 .sy-list-bottom .list-2-item-3 {
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: .81rem;
+  top: 5.36rem;
 }
 #phone .body .sy-list .list-3 .sy-list-top {
   width: 4.94rem;
@@ -130,6 +187,15 @@ html {
   height: 8.22rem;
   background: url('../images/list-3.png') no-repeat center;
   background-size: 100% 100%;
+  left: -7.5rem;
+}
+#phone .body .sy-list .list-3 .sy-list-bottom .list-3-item-1 {
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: 50%;
+  top: 4.2rem;
+  transform: translateX(-50%);
 }
 #phone .body .sy-list .list-4 .sy-list-top {
   width: 5.18rem;
@@ -137,8 +203,39 @@ html {
 }
 #phone .body .sy-list .list-4 .sy-list-bottom {
   height: 7.78rem;
+  width: 4.69rem;
+  margin: 0 auto;
   background: url('../images/list-4.png') no-repeat center;
   background-size: 100% 100%;
+  left: 7.5rem;
+}
+#phone .body .sy-list .list-4 .sy-list-bottom .list-4-item-1 {
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: -1rem;
+  top: 1rem;
+}
+#phone .body .sy-list .list-4 .sy-list-bottom .list-4-item-2 {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 1rem;
+  right: -1.1rem;
+}
+#phone .body .sy-list .list-4 .sy-list-bottom .list-4-item-3 {
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: -0.8rem;
+  bottom: 1.56rem;
+}
+#phone .body .sy-list .list-4 .sy-list-bottom .list-4-item-4 {
+  width: 0;
+  height: 0;
+  position: absolute;
+  right: -0.8rem;
+  bottom: 1.34rem;
 }
 #phone .body .sy-list .list-5 .sy-list-top {
   width: 6.72rem;
@@ -147,6 +244,7 @@ html {
 #phone .body .sy-list .list-5 .sy-list-bottom {
   height: 7.78rem;
   position: relative;
+  left: -7.5rem;
 }
 #phone .body .sy-list .list-5 .sy-list-bottom .b-1 {
   width: 4.4rem;
@@ -160,7 +258,7 @@ html {
   width: 3.8rem;
   height: 3.42rem;
   position: absolute;
-  left: 0;
+  left: .42rem;
   bottom: 0;
 }
 #phone .body .sy-list .list-5 .sy-list-bottom .b-3 {
@@ -175,6 +273,7 @@ html {
   height: 4.8rem;
   background: url('../images/sy-footer-bj.png') no-repeat center;
   background-size: 100% 100%;
+  position: relative;
 }
 #phone .body .code .code-body {
   width: 6.9rem;
@@ -183,6 +282,8 @@ html {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  position: absolute;
+  left: -7.5rem;
 }
 #phone .body .code .code-body img {
   width: 2rem;
@@ -191,6 +292,7 @@ html {
 #phone footer {
   width: 100%;
   position: relative;
+  height: 2rem;
 }
 #phone footer .dibu {
   width: 100%;

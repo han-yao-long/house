@@ -17,6 +17,7 @@ p {
     margin: 0;
     padding: 0;
     list-style-type: none;
+    text-decoration: none
 }
 
 /* 清除浮动 */
@@ -128,7 +129,7 @@ nav {
     position: relative;
     .banner-1 {
         position: absolute;
-        left: 1.64rem;
+        left: -4.8rem;
         top: 1rem;
         .glass-1 {
             width: 2.96rem;
@@ -146,50 +147,56 @@ nav {
         left: 9.8rem;
         top: 1.5rem;
         img {
-            width: 2.17rem;
-            height: 2.28rem;
+            width: .217rem;
+            height: .228rem;
         }
     }
     .banner-3 {
         position: absolute;
-        width: 5.1rem;
         left: 8.6rem;
         top: 3.2rem;
-        h3 {
-            font-size: 1.1rem;
-            color: #fff;
-            font-weight: bold;
-        }
-        p {
-            color: #220000;
-            font-size: .36rem;
-            span {
-                font-size: .46rem
+        width: 0;
+        overflow: hidden;
+        .banner-3s {
+            width: 5.1rem;
+            ;
+            overflow: hidden;
+            h3 {
+                font-size: 1.1rem;
+                color: #fff;
+                font-weight: bold;
             }
-            text-align: center;
-        }
-        .btn {
-            width: 100%;
-            margin-top: .28rem;
-            display: flex;
-            justify-content: space-between;
-            img {
-                width: 2.35rem;
-                height: .76rem;
+            p {
+                color: #220000;
+                font-size: .36rem;
+                span {
+                    font-size: .46rem
+                }
+                text-align: center;
+            }
+            .btn {
+                width: 100%;
+                margin-top: .28rem;
+                display: flex;
+                justify-content: space-between;
+                img {
+                    width: 2.35rem;
+                    height: .76rem;
+                }
             }
         }
     }
     .banner-4 {
         position: absolute;
-        right: 2.61rem;
+        right: -4rem;
         top: 4.56rem;
         .glass-2 {
             width: 2.9rem;
             height: 3.2rem;
         }
         .tolk {
-            width: 1.82rem;
-            height: 1.06rem;
+            width: 2rem;
+            height: 1.3rem;
             position: absolute;
             left: 1.24rem;
             top: -.6rem;
@@ -204,6 +211,7 @@ nav {
         width: 100%;
         display: flex;
         justify-content: center;
+        position: relative;
         .items-1 {
             h3 {
                 font-size: .9rem;
@@ -214,7 +222,7 @@ nav {
                 background: linear-gradient(0deg, rgba(255, 192, 0, 1) 0%, rgba(255, 138, 0, 1) 88.7939453125%);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
-                width: 3.5rem;
+                width: 4rem;
                 border-bottom: .04rem solid #F3EEE0;
                 height: 1.16rem;
                 line-height: 1.16rem;
@@ -234,21 +242,69 @@ nav {
         }
     }
     .body-1 {
-        width: 100%;
+        height: 9rem;
         .items-2 {
             width: 9.63rem;
             height: 9rem;
             background: url('./../images/bodys-1-bg.png') no-repeat center;
             background-size: 100% 100%;
+            position: absolute;
+            right: -9rem;
+            .leftTalk{
+                width: .26rem;
+                height: .236rem;
+                position: absolute;
+                left: 1.6rem;
+                top:3.41rem;
+            }
+            .rightTalk{
+                width: .315rem;
+                height: .216rem;
+                position: absolute;
+                right:1.6rem;
+                top: 6.06rem;
+            }
+        }
+        .items-1 {
+            position: absolute;
+            left: -2.7rem;
         }
     }
     .body-2 {
         width: 100%;
+        height: 8.24rem;
         .items-2 {
             width: 9rem;
             height: 8.24rem;
             background: url('./../images/bodys-2-bg.png') no-repeat center;
             background-size: 100% 100%;
+            position: absolute;
+            left: -9rem;
+            .body-2-1{
+                position: absolute;
+                left: 1.58rem;
+                top: 2.56rem;
+                width: .19rem;
+                height: .19rem;
+            }
+            .body-2-2{
+                position: absolute;
+                right: 1.77rem;
+                top: 4.76rem;
+                width: .164rem;
+                height: .164rem;
+            }
+            .body-2-3{
+                position: absolute;
+                left:1.56rem;
+                top: 5.36rem;
+                width: .092rem;
+                height: .092rem;
+            }
+        }
+        .items-1 {
+            position: absolute;
+            left: -2.7rem;
         }
         h3 {
             width: 3.9rem;
@@ -256,31 +312,85 @@ nav {
     }
     .body-3 {
         width: 100%;
+        height: 8.24rem;
         .items-2 {
             width: 9.92rem;
             height: 8.24rem;
             background: url('./../images/bodys-3-bg.png') no-repeat center;
             background-size: 100% 100%;
+            position: absolute;
+            right: -9rem;
+            .body-3-1{
+                width: .64rem;
+                height: .336rem;
+                position: absolute;
+                top: 5.8rem;
+                left: 5rem;
+            }
         }
         h3 {
             width: 3.9rem;
         }
+        .items-1 {
+            position: absolute;
+            left: -2.7rem;
+        }
     }
     .body-4 {
         width: 100%;
+        height: 9.12rem;
         .items-2 {
             width: 6.78rem;
             height: 9.12rem;
             background: url('./../images/bodys-4-bg.png') no-repeat center;
             background-size: 100% 100%;
+            position: absolute;
+            left: -9rem;
+            img{
+                position: absolute;
+            }
+            .body-4-1{
+                width: .32rem;
+                height: .174rem;
+                top: 3rem;
+                left: 2.4rem;
+                transform-origin:right
+            }
+            .body-4-2{
+                width: .35rem;
+                height: .162rem;
+                top: 2.8rem;
+                right: 2.1rem;
+                transform-origin:left
+            }
+            .body-4-3{
+                width: .354rem;
+                height: .29rem;
+                top: 5.8rem;
+                left: 2.4rem;
+                transform-origin:right
+            }
+            .body-4-4{
+                width: .313rem;
+                height: .296rem;
+                top: 6.4rem;
+                right: 2.72rem;
+                transform-origin:left
+            }
+        }
+        .items-1 {
+            position: absolute;
+            left:-2.7rem;
         }
     }
     .body-5 {
         width: 100%;
+        height: 9.8rem;
         .items-2 {
             width: 8.9rem;
             height: 9.8rem;
-            position: relative;
+            position: absolute;
+            right: -9rem;
             img {
                 width: 5.64rem;
                 height: 5.21rem;
@@ -300,28 +410,34 @@ nav {
                 right: -1rem;
             }
         }
+        .items-1 {
+            position: absolute;
+            left: -2.7rem;
+        }
     }
 }
+
 // 二维码
-.haicao .twoCode{
+.haicao .twoCode {
     width: 100%;
     height: 7.85rem;
     background: url('./../images/twoCode.png') no-repeat center;
     background-size: 100% 100%;
     overflow: hidden;
-    .list{
+    .list {
         margin: 0 auto;
         width: 10.5rem;
         margin-top: 3.8rem;
         display: flex;
         justify-content: space-between;
         align-items: top;
-        img{
+        img {
             width: 2.5rem;
-            height: 3.2rem;
+            height: 0;
         }
     }
 }
+
 /*底部*/
 
 .haicao .bottom {

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- SEO -->
+    <meta name="baidu-site-verification" content="sH4yvVgOrM" />
+    <meta name="description" content="海草公社app官方网站，一个既能赚钱，又会省钱的阅读APP。“海草公社”是一款新形式的资讯阅读软件，整合了平台、媒体、用户之间的各个资源，使其达成合作共赢。平台以移动应用APP+微信小程序为载体，鼓励用户阅读、分享、发现、创作，努力使阅读变得更有价值。">
+    <meta name="keywords" content="海草公社赚钱,海草公社, 海草公社官网">
+    <meta name="author" content="海草公社" />
+    <title>海草公社官网_海草公社app_海草公社赚钱_大众推荐的消费攻略</title>
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/animate.css">
+    <link href="./callme/callme.css?vison=1.01" rel="stylesheet" type="text/css" />
+    <link href="./css/iconAnimation.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="haicao">
+        <!-- 头部 -->
+        <nav>
+            <div class="nav-body">
+                <div class="body-1"><img src="./images/wxicon.png" alt=""> <span>海草公社</span></div>
+                <ul>
+                    <a href="./index.html">
+                        <li>首页</li>
+                    </a>
+                    <a href="./enjoy.html">
+                        <li>招贤纳士</li>
+                    </a>
+                    <a href="./aboutUs.html">
+                        <li>关于公司</li>
+                    </a>
+                    <a href="./callme.html">
+                        <li class="active" class="clear-margin-right">联系我们</li>
+                    </a>
+                </ul>
+            </div>
+        </nav>
+        <div id="container"></div>
+        <!-- 这里是底部 -->
+        <div class="footer">
+            <div class="fcenter">
+                <div class="fbody">
+                    <div class="fby_f vsihidden">
+                        <dl>
+                            <dt>01.海草公社-天津</dt>
+                            <dd><img src="./images/address.png" />天津自贸试验区（中心商务区）响螺湾庆盛道与集华道交口金唐大厦A座6层A区26号</dd>
+                            <dd style="margin-top:30px"><img src="./images/phone.png">022-25760131</dd>
+                            <dd><img src="./images/email.png">service@wehaicao.com</dd>
+                        </dl>
+                    </div>
+                    <div class="fby_r vsihidden">
+                        <dl>
+                            <dt>02.海草公社-北京</dt>
+                            <dd><img src="./images/address.png" />北京市海淀区林萃桥北宝盛南路奥北科技园17号楼</dd>
+                            <dd><img src="./images/phone.png">010-82525099</dd>
+                            <dd><img src="./images/email.png">service@wehaicao.com</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <img class="footer-bg" src="./images/zx-bottom.png" alt="">
+        </div>
+        <div class="bottom" style="overflow: hidden">
+            <ul style="height: 40px;line-height:40px">
+                <a href="http://www.wehaicao.com" title="海草公社官网">
+                    <li>主体名：天津微卡互动科技有限公司</li>
+                </a>
+                <a href="http://www.wehaicao.com/licence/icp.html" target="_blank">
+                    <li>地址：北京市海淀区林萃桥北宝盛南路奥北科技园17号楼
+                    </li>
+                </a>
+                <a href="http://www.miibeian.gov.cn" style="cursor:pointer;" target="_blank" rel="nofollow">
+                    <li>电话：010-82525099</li>
+                </a>
+            </ul>
+            <ul>
+                <a href="http://www.wehaicao.com" title="海草公社官网">
+                    <li><img width="0.12px" height="0.12px" style="margin-top:3px" src="./images/shangbiao.png">2018
+                        海草公社</li>
+                </a>
+                <a href="http://www.wehaicao.com/licence/icp.html" target="_blank">
+                    <li>津B2-20180040
+                    </li>
+                </a>
+                <a href="http://www.miibeian.gov.cn" style="cursor:pointer;" target="_blank" rel="nofollow">
+                    <li>津ICP备17006879号</li>
+                </a>
+                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12010702000204" target="_blank"
+                    style="cursor: pointer;" rel="nofollow">
+                    <li><img class="li-jing" src="./images/jing-logo.png" alt="">津公网安备 12010702000204号</li>
+                </a>
+                <li id="gongan">津文执网文（2017）7622-022号</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+<script src="./js/anime.min.js"></script>
+<script src="./js/jquery.min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hcjvSCfxzpPQAX2kd6ULRG2y1WdF4T7x"></script>
+<script>
+    var map = new BMap.Map("container");
+    // 创建地图实例  
+    var point = new BMap.Point(116.383082, 40.038226);
+    // 创建点坐标  
+    map.centerAndZoom(point, 15);
+    // 初始化地图，设置中心点坐标和地图级别  
+    var marker = new BMap.Marker(point); // 创建标注    
+    map.addOverlay(marker);
+    let opts = null;
+    let maxWidth = $('#container').width()
+    if (maxWidth >= 1024) {
+        $('#container').css({
+            'font-size': '26px'
+        })
+        opts = {
+            width: 400, // 信息窗口宽度    
+            height: 200, // 信息窗口高度    
+            title: "北京微卡互动科技有限公司" // 信息窗口标题   
+        }
+    } else {
+        opts = {
+            width: 160, // 信息窗口宽度    
+            height: 80, // 信息窗口高度    
+            title: "北京微卡互动科技有限公司" // 信息窗口标题   
+        }
+    }
+
+    var infoWindow = new BMap.InfoWindow("地址：北京市海淀区宝盛南路1号院17号楼3层101-01室<br/>电话号码：010-82525099", opts); // 创建信息窗口对象    
+    map.openInfoWindow(infoWindow, map.getCenter());
+</script>
+
+</html>

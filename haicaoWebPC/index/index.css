@@ -16,6 +16,7 @@ p {
   margin: 0;
   padding: 0;
   list-style-type: none;
+  text-decoration: none;
 }
 /* 清除浮动 */
 .clearfix:after {
@@ -114,7 +115,7 @@ nav .nav-body ul .active {
 }
 .haicao .banner .banner-1 {
   position: absolute;
-  left: 1.64rem;
+  left: -4.8rem;
   top: 1rem;
 }
 .haicao .banner .banner-1 .glass-1 {
@@ -133,41 +134,46 @@ nav .nav-body ul .active {
   top: 1.5rem;
 }
 .haicao .banner .banner-2 img {
-  width: 2.17rem;
-  height: 2.28rem;
+  width: .217rem;
+  height: .228rem;
 }
 .haicao .banner .banner-3 {
   position: absolute;
-  width: 5.1rem;
   left: 8.6rem;
   top: 3.2rem;
+  width: 0;
+  overflow: hidden;
 }
-.haicao .banner .banner-3 h3 {
+.haicao .banner .banner-3 .banner-3s {
+  width: 5.1rem;
+  overflow: hidden;
+}
+.haicao .banner .banner-3 .banner-3s h3 {
   font-size: 1.1rem;
   color: #fff;
   font-weight: bold;
 }
-.haicao .banner .banner-3 p {
+.haicao .banner .banner-3 .banner-3s p {
   color: #220000;
   font-size: .36rem;
   text-align: center;
 }
-.haicao .banner .banner-3 p span {
+.haicao .banner .banner-3 .banner-3s p span {
   font-size: 0.46rem;
 }
-.haicao .banner .banner-3 .btn {
+.haicao .banner .banner-3 .banner-3s .btn {
   width: 100%;
   margin-top: .28rem;
   display: flex;
   justify-content: space-between;
 }
-.haicao .banner .banner-3 .btn img {
+.haicao .banner .banner-3 .banner-3s .btn img {
   width: 2.35rem;
   height: .76rem;
 }
 .haicao .banner .banner-4 {
   position: absolute;
-  right: 2.61rem;
+  right: -4rem;
   top: 4.56rem;
 }
 .haicao .banner .banner-4 .glass-2 {
@@ -175,8 +181,8 @@ nav .nav-body ul .active {
   height: 3.2rem;
 }
 .haicao .banner .banner-4 .tolk {
-  width: 1.82rem;
-  height: 1.06rem;
+  width: 2rem;
+  height: 1.3rem;
   position: absolute;
   left: 1.24rem;
   top: -0.6rem;
@@ -188,6 +194,7 @@ nav .nav-body ul .active {
   width: 100%;
   display: flex;
   justify-content: center;
+  position: relative;
 }
 .haicao .bodys .items .items-1 h3 {
   font-size: .9rem;
@@ -198,7 +205,7 @@ nav .nav-body ul .active {
   background: linear-gradient(0deg, #ffc000 0%, #ff8a00 88.79394531%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  width: 3.5rem;
+  width: 4rem;
   border-bottom: .04rem solid #F3EEE0;
   height: 1.16rem;
   line-height: 1.16rem;
@@ -216,54 +223,156 @@ nav .nav-body ul .active {
   top: 0;
 }
 .haicao .bodys .body-1 {
-  width: 100%;
+  height: 9rem;
 }
 .haicao .bodys .body-1 .items-2 {
   width: 9.63rem;
   height: 9rem;
   background: url('../images/bodys-1-bg.png') no-repeat center;
   background-size: 100% 100%;
+  position: absolute;
+  right: -9rem;
+}
+.haicao .bodys .body-1 .items-2 .leftTalk {
+  width: .26rem;
+  height: .236rem;
+  position: absolute;
+  left: 1.6rem;
+  top: 3.41rem;
+}
+.haicao .bodys .body-1 .items-2 .rightTalk {
+  width: .315rem;
+  height: .216rem;
+  position: absolute;
+  right: 1.6rem;
+  top: 6.06rem;
+}
+.haicao .bodys .body-1 .items-1 {
+  position: absolute;
+  left: -2.7rem;
 }
 .haicao .bodys .body-2 {
   width: 100%;
+  height: 8.24rem;
 }
 .haicao .bodys .body-2 .items-2 {
   width: 9rem;
   height: 8.24rem;
   background: url('../images/bodys-2-bg.png') no-repeat center;
   background-size: 100% 100%;
+  position: absolute;
+  left: -9rem;
+}
+.haicao .bodys .body-2 .items-2 .body-2-1 {
+  position: absolute;
+  left: 1.58rem;
+  top: 2.56rem;
+  width: .19rem;
+  height: .19rem;
+}
+.haicao .bodys .body-2 .items-2 .body-2-2 {
+  position: absolute;
+  right: 1.77rem;
+  top: 4.76rem;
+  width: .164rem;
+  height: .164rem;
+}
+.haicao .bodys .body-2 .items-2 .body-2-3 {
+  position: absolute;
+  left: 1.56rem;
+  top: 5.36rem;
+  width: .092rem;
+  height: .092rem;
+}
+.haicao .bodys .body-2 .items-1 {
+  position: absolute;
+  left: -2.7rem;
 }
 .haicao .bodys .body-2 h3 {
   width: 3.9rem;
 }
 .haicao .bodys .body-3 {
   width: 100%;
+  height: 8.24rem;
 }
 .haicao .bodys .body-3 .items-2 {
   width: 9.92rem;
   height: 8.24rem;
   background: url('../images/bodys-3-bg.png') no-repeat center;
   background-size: 100% 100%;
+  position: absolute;
+  right: -9rem;
+}
+.haicao .bodys .body-3 .items-2 .body-3-1 {
+  width: .64rem;
+  height: .336rem;
+  position: absolute;
+  top: 5.8rem;
+  left: 5rem;
 }
 .haicao .bodys .body-3 h3 {
   width: 3.9rem;
 }
+.haicao .bodys .body-3 .items-1 {
+  position: absolute;
+  left: -2.7rem;
+}
 .haicao .bodys .body-4 {
   width: 100%;
+  height: 9.12rem;
 }
 .haicao .bodys .body-4 .items-2 {
   width: 6.78rem;
   height: 9.12rem;
   background: url('../images/bodys-4-bg.png') no-repeat center;
   background-size: 100% 100%;
+  position: absolute;
+  left: -9rem;
+}
+.haicao .bodys .body-4 .items-2 img {
+  position: absolute;
+}
+.haicao .bodys .body-4 .items-2 .body-4-1 {
+  width: .32rem;
+  height: .174rem;
+  top: 3rem;
+  left: 2.4rem;
+  transform-origin: right;
+}
+.haicao .bodys .body-4 .items-2 .body-4-2 {
+  width: .35rem;
+  height: .162rem;
+  top: 2.8rem;
+  right: 2.1rem;
+  transform-origin: left;
+}
+.haicao .bodys .body-4 .items-2 .body-4-3 {
+  width: .354rem;
+  height: .29rem;
+  top: 5.8rem;
+  left: 2.4rem;
+  transform-origin: right;
+}
+.haicao .bodys .body-4 .items-2 .body-4-4 {
+  width: .313rem;
+  height: .296rem;
+  top: 6.4rem;
+  right: 2.72rem;
+  transform-origin: left;
+}
+.haicao .bodys .body-4 .items-1 {
+  position: absolute;
+  left: -2.7rem;
 }
 .haicao .bodys .body-5 {
   width: 100%;
+  height: 9.8rem;
 }
 .haicao .bodys .body-5 .items-2 {
   width: 8.9rem;
   height: 9.8rem;
-  position: relative;
+  position: absolute;
+  right: -9rem;
 }
 .haicao .bodys .body-5 .items-2 img {
   width: 5.64rem;
@@ -283,6 +392,10 @@ nav .nav-body ul .active {
   bottom: 0;
   right: -1rem;
 }
+.haicao .bodys .body-5 .items-1 {
+  position: absolute;
+  left: -2.7rem;
+}
 .haicao .twoCode {
   width: 100%;
   height: 7.85rem;
@@ -300,7 +413,7 @@ nav .nav-body ul .active {
 }
 .haicao .twoCode .list img {
   width: 2.5rem;
-  height: 3.2rem;
+  height: 0;
 }
 /*底部*/
 .haicao .bottom {

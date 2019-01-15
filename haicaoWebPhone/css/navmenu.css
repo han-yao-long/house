@@ -239,7 +239,12 @@
     background: url('../images/nav/aboutUs_1.png') center no-repeat;
     background-size: 100% 100%
 }
-
+.main-nav .nav-list li .icon-logo_4 {
+    width: 0.36rem;
+    height: 0.36rem;
+    background: url('../images/nav/tolk_1.png') center no-repeat;
+    background-size: 100% 100%
+}
 .main-nav .nav-list li.active {
     padding-left: 1.3rem;
     box-sizing: border-box;

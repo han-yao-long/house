@@ -45,7 +45,7 @@
                             <div class="icon-logo3"></div><a href="./aboutUs.html" title="关于海草公社" target="_self" rel="nofollow">关于我们</a>
                         </li>
                         <li data-menuanchor="page3" class="list">
-                            <div class="icon-logo4"></div><a href="./aboutUs.html" title="关于海草公社" target="_self" rel="nofollow">联系我们</a>
+                            <div class="icon-logo4"></div><a href="./callme.html" title="联系海草公社" target="_self" rel="nofollow">联系我们</a>
                         </li>
                     </ul>
                 </div>
@@ -63,30 +63,45 @@
                     <img class="banner-1-img" src="./images/sy-banner-2.png" alt="">
                 </div>
                 <div class="banner-3">
-                    <img class="banner-1-img" src="./images/baby-1.png" alt="">
-                    <img class="banner-2-img" src="./images/bobo.png" alt="">
+                    <img class="banner-1-img" src="./images/baby-1.gif" alt="">
+                    <img class="banner-2-img" src="./images/bobo.gif" alt="">
                 </div>
             </div>
             <div class="down-btn">
-                <img class="banner-1-img" src="./images/ios.png" alt="">
-                <img class="banner-2-img" src="./images/an.png" alt="">
+                <a href="https://itunes.apple.com/app/id1444731347"  title="海草公社app ios下载" style="text-decoration:none;"  ><img class="banner-1-img" src="./images/ios.png" alt=""></a>
+                <a href="https://a.app.qq.com/o/simple.jsp?pkgname=com.billionstech.grassbook" title="海草公社app安卓下载" style="text-decoration:none;"><img class="banner-2-img" src="./images/an.png" alt=""></a>
             </div>
             <div class="sy-list">
                 <div class="sy-list-item list-1">
                     <img class="sy-list-top" src="./images/tit-1.png" alt="">
-                    <div class="sy-list-bottom"></div>
+                    <div class="sy-list-bottom">
+                        <img class="list-1s" src="./images/list-1s.png" alt="">
+                        <img class="list-1-item-1" src="./images/left-talk.png" alt="">
+                        <img class="list-1-item-2" src="./images/right-talk.png">
+                    </div>
                 </div>
                 <div class="sy-list-item list-2">
                     <img class="sy-list-top" src="./images/tit-2.png" alt="">
-                    <div class="sy-list-bottom"></div>
+                    <div class="sy-list-bottom">
+                        <img class="list-2-item-1" src="./images/tao.png" alt="">
+                        <img class="list-2-item-2" src="./images/pin.png" alt="">
+                        <img class="list-2-item-3" src="./images/jing.png" alt="">
+                    </div>
                 </div>
                 <div class="sy-list-item list-3">
                     <img class="sy-list-top" src="./images/tit-3.png" alt="">
-                    <div class="sy-list-bottom"></div>
+                    <div class="sy-list-bottom">
+                        <img class="list-3-item-1" src="./images/list-3-1.png" alt="">
+                    </div>
                 </div>
                 <div class="sy-list-item list-4">
                     <img class="sy-list-top" src="./images/tit-4.png" alt="">
-                    <div class="sy-list-bottom"></div>
+                    <div class="sy-list-bottom">
+                        <img class="list-4-item-1" src="./images/list-4-1.png" alt="">
+                        <img class="list-4-item-2" src="./images/list-4-2.png" alt="">
+                        <img class="list-4-item-3" src="./images/list-4-3.png" alt="">
+                        <img class="list-4-item-4" src="./images/list-4-4.png" alt="">
+                    </div>
                 </div>
                 <div class="sy-list-item list-5">
                     <img class="sy-list-top" src="./images/tit-5.png" alt="">
@@ -143,138 +158,259 @@
 </body>
 <script src="./js/jquery.min.js"></script>
 <script src="./js/nav.js"></script>
+<script src="./js/anime.min.js"></script>
 <script>
+    let animescroll1 = anime({
+        targets: '.sy-list .list-1 .sy-list-top',
+        translateY: ['-2.63rem', 0],
+        opacity: {
+            value: 1,
+            delay: 200,
+        },
+        autoplay: false,
+        duration: 800,
+        easing: 'linear'
+    });
+    let animescrol2 = anime({
+        targets: '.sy-list .list-2 .sy-list-top',
+        translateY: ['-2.63rem', 0],
+        opacity: {
+            value: 1,
+            delay: 200,
+        },
+        autoplay: false,
+        duration: 800,
+        easing: 'linear'
+    });
+    let animescrol3 = anime({
+        targets: '.sy-list .list-3 .sy-list-top',
+        translateY: ['-2.63rem', 0],
+        opacity: {
+            value: 1,
+            delay: 200,
+        },
+        autoplay: false,
+        duration: 800,
+        easing: 'linear'
+    });
+    let animescrol4 = anime({
+        targets: '.sy-list .list-4 .sy-list-top',
+        translateY: ['-2.63rem', 0],
+        opacity: {
+            value: 1,
+            delay: 200,
+        },
+        autoplay: false,
+        duration: 800,
+        easing: 'linear'
+    });
+    let animescrol5 = anime({
+        targets: '.sy-list .list-5 .sy-list-top',
+        translateY: ['-2.63rem', 0],
+        opacity: {
+            value: 1,
+            delay: 200,
+        },
+        autoplay: false,
+        duration: 800,
+        easing: 'linear'
+    });
+    var tl = anime.timeline({
+        duration: 3000,
+        autoplay: false,
+    }).add({
+        targets: '.sy-list .list-1 .sy-list-bottom',
+        left: 0,
+        duration: 3000,
+    }).add({
+        targets: '.sy-list .list-1 .sy-list-bottom .list-1-item-1',
+        width: '2.9rem',
+        height: '2.4rem',
+        duration: 1000,
+    }, 500).add({
+        targets: '.sy-list .list-1 .sy-list-bottom .list-1-item-2',
+        width: '3.24rem',
+        height: '2.16rem',
+        duration: 1000,
+    }, 500)
+    var t2 = anime.timeline({
+        duration: 3000,
+        autoplay: false,
+    }).add({
+        targets: '.sy-list .list-2 .sy-list-bottom',
+        left: 0,
+        duration: 3000,
+    }).add({
+        targets: '.sy-list .list-2 .sy-list-bottom .list-2-item-1',
+        width: '1.9rem',
+        height: '1.9rem',
+        duration: 1000,
+    }, 800).add({
+        targets: '.sy-list .list-2 .sy-list-bottom .list-2-item-2',
+        width: '1.64rem',
+        height: '1.62rem',
+        duration: 1000,
+    }, 800).add({
+        targets: '.sy-list .list-2 .sy-list-bottom .list-2-item-3',
+        width: '.92rem',
+        height: '.92rem',
+        duration: 1000,
+    }, 800)
+    var t3 = anime.timeline({
+        duration: 3000,
+        autoplay: false,
+    }).add({
+        targets: '.sy-list .list-3 .sy-list-bottom',
+        left: 0,
+        duration: 3000,
+    }).add({
+        targets: '.sy-list .list-3 .sy-list-bottom .list-3-item-1',
+        width: '6.39rem',
+        height: '3.36rem',
+        duration: 1000,
+    }, 800)
+    var t4 = anime.timeline({
+        duration: 3000,
+        autoplay: false,
+    }).add({
+        targets: '.sy-list .list-4 .sy-list-bottom',
+        left: 0,
+        duration: 3000,
+    }).add({
+        targets: '.sy-list .list-4 .sy-list-bottom .list-4-item-1',
+        width: '2.68rem',
+        height: '1.46rem',
+        duration: 1000,
+    }, 800).add({
+        targets: '.sy-list .list-4 .sy-list-bottom .list-4-item-2',
+        width: '2.94rem',
+        height: '1.36rem',
+        duration: 1000,
+    }, 800).add({
+        targets: '.sy-list .list-4 .sy-list-bottom .list-4-item-3',
+        width: '2.94rem',
+        height: '2.44rem',
+        duration: 1000,
+    }, 800).add({
+        targets: '.sy-list .list-4 .sy-list-bottom .list-4-item-4',
+        width: '2.62rem',
+        height: '2.47rem',
+        duration: 1000,
+    }, 800);
+    var t5 = anime.timeline({
+        duration: 3000,
+        autoplay: false,
+    }).add({
+        targets: '.sy-list .list-5 .sy-list-bottom',
+        left: 0,
+        duration: 3000,
+    })
+    let codes = anime({
+        targets: '.code .code-body',
+        left:'.3rem',
+        autoplay: false,
+        duration: 800,
+        easing: 'linear'
+    });
     window.onscroll = function () {
-        let bodyOne = $('.body_one .scend').offset().top;
-        let bodyTwo = $('.body_two .text').offset().top;
-        let bodyThree = $('.body_three .text').offset().top;
-        let fcenter = $('.fcenter').offset().top;
+        let bodyOne = $('.sy-list .list-1 .sy-list-top').offset().top;
+        let bodyOne1 = $('.sy-list .list-2 .sy-list-top').offset().top;
+        let bodyOne2 = $('.sy-list .list-3 .sy-list-top').offset().top;
+        let bodyOne3 = $('.sy-list .list-4 .sy-list-top').offset().top;
+        let bodyOne4 = $('.sy-list .list-5 .sy-list-top').offset().top;
+        let bodyTwo = $('.sy-list .list-1 .sy-list-bottom').offset().top;
+        let bodyTwo1 = $('.sy-list .list-2 .sy-list-bottom').offset().top;
+        let bodyTwo2 = $('.sy-list .list-3 .sy-list-bottom').offset().top;
+        let bodyTwo3 = $('.sy-list .list-4 .sy-list-bottom').offset().top;
+        let bodyTwo4 = $('.sy-list .list-5 .sy-list-bottom').offset().top;
+        let code = $('.code .code-body').offset().top;
+
         let scrolls = $(document).scrollTop();
         let windowHeight = $(window).height();
-        let all = scrolls + windowHeight;
-        // if()
-        if (scrolls <= bodyOne) {
-            // $(".p1_phone").stop().animate({top:"1.2rem"},300).animate({top:"1.1rem"},500).animate({top:"1.2rem"},500)  
-            $(".body_one .first").addClass("animated bounceInLeft")
-            $(".body_one .scend").addClass("animated fadeInDown")
-        } else {
-            $(".body_one .first").removeClass("animated bounceInLeft")
-            $(".body_one .scend").removeClass("animated fadeInDown")
-        };
-        if (all > bodyTwo) {
-            $(".body_two .text").css("visibility", "visible");
-            $(".body_two .text").addClass("animated bounceInUp");
+        let all = scrolls + windowHeight / 2;
+        if (bodyOne <= (scrolls + windowHeight / 2)) {
+            animescroll1.play();
+            // animescroll2.play()
         }
-        if (all > bodyThree) {
-            $(".body_three .text").css("visibility", "visible");
-            $(".body_three .text").addClass("animated bounceInRight");
-            $(".body_three .phone2").css("visibility", "visible");
-            $(".body_three .phone2").addClass("animated bounceInLeft");
+        if (bodyOne1 <= (scrolls + windowHeight / 2)) {
+            animescrol2.play();
+            // animescroll2.play()
         }
-        if (all > fcenter) {
-            $("footer .fby_f").addClass("animated fadeInDown vsivisible");
+        if (bodyOne2 <= (scrolls + windowHeight / 2)) {
+            animescrol3.play();
+            // animescroll2.play()
         }
-        var div = $(".p1_righpng");
-        div.animate({
-            right: '-2rem',
-            top: '0.16rem'
-        }, 2000);
-        div.animate({
-            right: '-2.6rem',
-            top: '0rem'
-        }, 2000);
-        var div1 = $(".p1_lefBpng");
-        div1.animate({
-            left: '0',
-            top: '9rem'
-        }, "slow");
-        div1.animate({
-            left: '-0.1rem',
-            top: '9rem'
-        }, "slow");
-        var div1 = $(".p1_righBpng");
-        div1.animate({
-            right: '0',
-            top: '19.2rem'
-        }, "slow");
-        div1.animate({
-            right: '-0.2rem',
-            top: '19.2rem'
-        }, "slow");
-
+        if (bodyOne3 <= (scrolls + windowHeight / 2)) {
+            animescrol4.play();
+            // animescroll2.play()
+        }
+        if (bodyOne4 <= (scrolls + windowHeight / 2)) {
+            animescrol5.play();
+            // animescroll2.play()
+        }
+        if (bodyTwo <= (scrolls + windowHeight / 2)) {
+            tl.play()
+        }
+        if (bodyTwo1 <= (scrolls + windowHeight / 2)) {
+            t2.play()
+        }
+        if (bodyTwo2 <= (scrolls + windowHeight / 2)) {
+            t3.play()
+        }
+        if (bodyTwo3 <= (scrolls + windowHeight / 2)) {
+            t4.play()
+        }
+        if (bodyTwo4 <= (scrolls + windowHeight / 2)) {
+            t5.play()
+        }
+        if (code <= (scrolls + windowHeight-30)) {
+            codes.play()
+        }
     }
 
     $(document).ready(function () {
-        $(".body_one .first").addClass("animated bounceInLeft")
-        $(".body_one .scend").addClass("animated fadeInDown")
-        $("body").mousemove(function (e) {
-            var div = $(".p1_righpng");
-            div.animate({
-                right: '-2rem',
-                top: '0.16rem'
-            }, 2000);
-            div.animate({
-                right: '-1.6rem',
-                top: '0rem'
-            }, 2000);
-            let div1 = $(".p1_lefBpng");
-            div1.animate({
-                left: '0',
-                top: '9rem'
-            }, "slow");
-            div1.animate({
-                left: '-0.1rem',
-                top: '9rem'
-            }, "slow");
+        let anime1 = anime({
+            targets: '.banner-1 .banner-1-img',
+            translateY: ['-2.63rem', 0],
+            opacity: {
+                value: 1,
+                delay: 200,
+            },
+            duration: 800,
+            easing: 'linear'
         });
-        $(".p1_phone").stop().animate({
-            top: "1.2rem"
-        }, 300).animate({
-            top: "1.1rem"
-        }, 500).animate({
-            top: "1.2rem"
-        }, 500);
-
-
-        function getlocalStor() {
-            return JSON.parse(localStorage.getItem('userLink'));
-        };
-        // 获取code
-        let obj = getlocalStor()
-        // 获取code
-        function urlMsg() {
-            let legth = window.location.href.lastIndexOf("?") + 1;
-            let msg = window.location.href.substring(legth).split("&");
-            let result = {};
-            for (var i = 0; i < msg.length; i++) {
-                var temp = msg[i].split('=');
-                if (temp.length < 2) {
-                    result[temp[0]] = '';
-                } else {
-                    result[temp[0]] = temp[1];
-                }
+        let anime2 = anime({
+            targets: '.banner-2 .banner-1-img',
+            translateX: ['-5.1rem', 0],
+            duration: 400,
+            easing: 'linear',
+            delay: 500,
+        });
+        let anime3 = anime({
+            targets: '.banner-3 .banner-1-img',
+            translateX: ['10rem', 0],
+            duration: 800,
+            delay: 300,
+            easing: 'linear'
+        });
+        let anime4 = anime({
+            targets: '.banner-3 .banner-2-img',
+            duration: 800,
+            translateY: '.2rem',
+            opacity: 1,
+            delay: 1000
+        });
+        let anime5 = anime({
+            targets: '.down-btn img',
+            duration: 800,
+            translateY: ['-1.42rem', '0'],
+            delay: 1200,
+            opacity: {
+                value: 1,
+                duration: 200,
+                delay: 1000
             }
-            return result
-        };
-        let code = urlMsg().code; //微信code 
-        if (code) {
-            $.ajax({
-                type: "POST",
-                url: "god.zuanliantech.com/content/share_article",
-                data: {
-                    code,
-                    articleId: obj.articleId,
-                    userId: obj.userId
-                },
-                dataType: "json",
-                success: function (data) {
-                    console.log(data)
-                }
-            });
-            //  setTimeout(function(){
-            //    window.location.href = obj.url;
-            //  })
-        }
+        });
     });
 </script>
 <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
