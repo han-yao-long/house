@@ -14,6 +14,10 @@ export default new Router({
       component: () => import('@/views/init/index')
     },
     {
+      path: '/zhuce',
+      component: () => import('@/views/zuce/index')
+    },
+    {
       path: '/gassgame',
       component: () => import('@/views/gassGame/index')
     },

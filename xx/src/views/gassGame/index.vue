@@ -1,5 +1,7 @@
 <template>
   <div id="guss_loading">
+    <!-- 视频播放器 -->
+    <video v-if="isVideo" id="video" ref="video" :src="audioVoice" autoplay="autoplay"></video>
     <img class="head" src="@/assets/gassgame/head.png" alt>
     <div class="bodys">
       <div v-if="isLoading">
@@ -11,9 +13,14 @@
           </div>
         </div>
       </div>
-      <div>
-          
+      <div v-else>
+        <div class="fengmian-all">
+          <fengmian @openVideos="openvideoss" @openAlert="isAlert=true"></fengmian>
+        </div>
       </div>
+    </div>
+    <div v-show="isAlert" class="alert-all">
+      <alerts @closeAlsert="isAlert=false"></alerts>
     </div>
   </div>
 </template>
@@ -21,15 +28,21 @@
 import { wxCharts } from "@/utils/common";
 import { MessageBox } from "mint-ui";
 import { setInterval, clearInterval, setTimeout } from "timers";
+import fengmian from "./fengmian.vue";
+import alerts from "./alert.vue";
 // import aplayer from "vue-aplayer";
 export default {
   data() {
     return {
-      isLoading: false  //是否显示loading页面
+      isLoading: true, //是否显示loading页面
+      isAlert: false,
+      audioVoice: require("./../../../static/audio.mp4"),
+      isVideo: false
     };
   },
   components: {
-    // aplayer
+    fengmian,
+    alerts
   },
   methods: {
     loading() {
@@ -48,6 +61,24 @@ export default {
         $(".fish").css({ left: nu + "rem" });
         $(".color-loading").css({ left: nus + "rem" });
       }, 18);
+    },
+    openvideoss() {
+      this.isVideo = true;
+      let that = this;
+      setTimeout(function() {
+        that.playMusic();
+      }, 1000);
+    },
+    playMusic: function() {
+      let musicPl = this.$refs.video;
+      let that = this;
+      musicPl.addEventListener(
+        "ended",
+        function() {
+         that.$router.push('/zhuce')
+        },
+        false
+      );
     }
   },
   mounted() {
@@ -131,6 +162,23 @@ p {
       }
     }
   }
+}
+.fengmian-all {
+  position: absolute;
+  bottom: 0;
+}
+.alert-all {
+  z-index: 999;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+#video {
+  position: absolute;
+  left: 0;
+  width: 7.5rem;
+  height: 100vh;
+  z-index: 6666;
 }
 </style>
 
