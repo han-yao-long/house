@@ -1,7 +1,7 @@
 <template>
   <div id="daojishi">
     <div class="timebox">
-      <span>{{days}}</span>天
+     <div> <span>{{days}}</span>天</div>
     </div>
     <div class="btns" @click="closeAlsert"></div>
     <div v-show="isAlert" class="mask" @click="closeAlsert">
@@ -84,13 +84,13 @@ export default {
     ShowCountDown(year, month, day, divname) {
       let that = this;
       let now = new Date();
-      let endDate = new Date(2019, 0, 20, 8, 30, 0);
+      let endDate = new Date(2019, 0, 21, 8, 30, 0);
       console.log(endDate);
       let leftTime = endDate.getTime() - now.getTime();
       that.days = parseInt(leftTime / 1000 / 60 / 60 / 24, 10); //计算剩余的天数
       setInterval(function() {
         let now = new Date();
-        let endDate = new Date(2019, 0, 20, 8, 30, 0);
+        let endDate = new Date(2019, 0, 21, 8, 30, 0);
         let leftTime = endDate.getTime() - now.getTime();
         that.days = parseInt(leftTime / 1000 / 60 / 60 / 24, 10); //计算剩余的天数
       }, 1000);
@@ -146,11 +146,12 @@ p {
   .timebox {
     width: 4rem;
     height: 2.4rem;
-    margin: 6rem auto 0;
+    margin: 51vh auto 0;
     font-size: 1.5rem;
     color: #d70290;
-    text-align: center;
-    line-height: 2.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     span {
       font-size: 1.8rem;
     }
