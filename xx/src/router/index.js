@@ -14,6 +14,10 @@ export default new Router({
       component: () => import('@/views/init/index')
     },
     {
+      path: '/gassgame',
+      component: () => import('@/views/gassGame/index')
+    },
+    {
       path: '*',
       component: () => import('@/views/404')
     }, // 404页面

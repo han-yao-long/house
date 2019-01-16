@@ -1,5 +1,6 @@
 <template>
   <div id="daojishi">
+    <img @click="plays" class="music" src="@/assets/countDown/music.png" alt>
     <div class="timebox">
      <div> <span>{{days}}</span>天</div>
     </div>
@@ -32,20 +33,21 @@
       </div>
     </div>
     <!-- <aplayer autoplay :music="musicList"></aplayer> -->
-    <audio preload="auto" ref="audios">
+    <audio preload="auto" id="audioss" ref="audios" loop="loop">
       <source :src="audioVoice" type="audio/mpeg">
     </audio>
   </div>
 </template>
 <script>
 import { wxCharts } from "@/utils/common";
-import {MessageBox } from "mint-ui";
+import { MessageBox } from "mint-ui";
 // import aplayer from "vue-aplayer";
 export default {
   data() {
     return {
       isAlert: false,
       days: "",
+      canMusic: true,
       musicList: {
         title: "youkao100",
         author: "youkao100",
@@ -78,19 +80,26 @@ export default {
       }
     },
     plays() {
-      this.$refs["audios"].play();
+      if (this.canMusic) {
+        this.$refs["audios"].pause();
+        this.canMusic = false;
+      } else {
+        this.$refs["audios"].play();
+        this.canMusic = true;
+      }
+       $('.music').toggleClass("rotate")
     },
     // 倒计时
     ShowCountDown(year, month, day, divname) {
       let that = this;
       let now = new Date();
-      let endDate = new Date(2019, 0, 21, 8, 30, 0);
+      let endDate = new Date(2019, 0, 21, 0, 0, 0);
       console.log(endDate);
       let leftTime = endDate.getTime() - now.getTime();
       that.days = parseInt(leftTime / 1000 / 60 / 60 / 24, 10); //计算剩余的天数
       setInterval(function() {
         let now = new Date();
-        let endDate = new Date(2019, 0, 21, 8, 30, 0);
+        let endDate = new Date(2019, 0, 21, 0, 0, 0);
         let leftTime = endDate.getTime() - now.getTime();
         that.days = parseInt(leftTime / 1000 / 60 / 60 / 24, 10); //计算剩余的天数
       }, 1000);
@@ -114,6 +123,7 @@ export default {
       "WeixinJSBridgeReady",
       function() {
         that.$refs["audios"].play();
+         $('.music').toggleClass("rotate")
       },
       false
     );
@@ -121,8 +131,8 @@ export default {
   created() {
     let sUserAgent = navigator.userAgent.toLowerCase();
     let isWechat = sUserAgent.indexOf("micromessenger") != -1;
-    if(!isWechat){
-          MessageBox.alert("请在微信内打开", "提示");
+    if (!isWechat) {
+      MessageBox.alert("请在微信内打开", "提示");
     }
   }
 };
@@ -137,7 +147,7 @@ p {
   font-family: TSZT;
   width: 7.5rem;
   height: calc(100vh);
-// height: 13.34rem;
+  // height: 13.34rem;
   background: url("./../../assets/countDown/countDownAll.jpg") no-repeat center;
   background-size: 100% 100%;
   margin: 0 auto;
@@ -215,6 +225,44 @@ p {
         }
       }
     }
+  }
+}
+.music {
+  position: absolute;
+  right: 0.3rem;
+  top: 0.3rem;
+}
+// 旋转代码
+.rotate {
+  -webkit-animation: rotating 3s linear infinite;
+  -moz-animation: rotating 3s linear infinite;
+  -o-animation: rotating 3s linear infinite;
+  animation: rotating 3s linear infinite;
+}
+
+@-webkit-keyframes rotating {
+  from {
+    -webkit-transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes rotating {
+  from {
+    -moz-transform: rotate(0);
+  }
+  to {
+    -moz-transform: rotate(360deg);
   }
 }
 </style>
