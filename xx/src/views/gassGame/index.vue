@@ -27,12 +27,10 @@
 <script>
 import { MessageBox } from "mint-ui";
 import { setInterval, clearInterval, setTimeout } from "timers";
-<<<<<<< HEAD
 import { wxAuth, urlMsg, formatSeconds, wxCharts, appId } from "@/utils/common";
-=======
 import fengmian from "./fengmian.vue";
 import alerts from "./alert.vue";
->>>>>>> 186b1ffeeed3ffafbdbe66d184e8139710e0263e
+import { wx_token } from "@/api/common.js";
 // import aplayer from "vue-aplayer";
 export default {
   data() {
@@ -40,7 +38,8 @@ export default {
       isLoading: true, //是否显示loading页面
       isAlert: false,
       audioVoice: require("./../../../static/audio.mp4"),
-      isVideo: false
+      isVideo: false,
+      userMsg: {}
     };
   },
   components: {
@@ -65,13 +64,19 @@ export default {
         $(".color-loading").css({ left: nus + "rem" });
       }, 18);
     },
-<<<<<<< HEAD
+
     // 获取code码
-    wxAuths(){
-       wxAuth() 
-=======
+    wxAuths() {
+      let code = urlMsg().code;
+      if (code) {
+        this.wxtoken(code);
+      } else {
+        wxAuth();
+      }
+    },
     openvideoss() {
       this.isVideo = true;
+      this.$refs.video.play();
       let that = this;
       setTimeout(function() {
         that.playMusic();
@@ -83,16 +88,26 @@ export default {
       musicPl.addEventListener(
         "ended",
         function() {
-         that.$router.push('/zhuce')
+          if (that.userMsg.is_new_user) {
+            that.$router.push({path:"/updateimg",query:this.this.userMsg});
+          } else {
+            that.$router.push({path:"/zhuce",query:this.this.userMsg});
+          }
         },
         false
       );
->>>>>>> 186b1ffeeed3ffafbdbe66d184e8139710e0263e
+    },
+    // 获取用户openid
+    wxtoken(code) {
+      let data = { code };
+      wx_token(data).then(res => {
+        this.userMsg = res.data;
+      });
     }
   },
   mounted() {
     this.loading();
-    this.wxAuths()
+    this.wxAuths();
   },
   created() {
     // let sUserAgent = navigator.userAgent.toLowerCase();

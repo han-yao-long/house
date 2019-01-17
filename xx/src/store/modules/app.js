@@ -20,10 +20,10 @@ const app={
     isWeChat : ua.match(/MicroMessenger/i) == "micromessenger",  // 是否是微信
     imgIp:imgIp, // 路径配置
     // imgIp:'http://10.3.201.6:8888',
-    appId:appId(),
-    code:urlMsg().code,
-    userId:userId(),
-    articleId:articleId(),
+    // appId:appId(),
+    // code:urlMsg().code,
+    // userId:userId(),
+    // articleId:articleId(),
     publicKey:'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA+erZj3EmG+FHdOcCGt1JJqpoz7ZPzDGB1ZvmMAMtbGF8RRRwNfglA6no/kF3ZYGmsP+ykT4LzbKdFX0xOUptuKaFm7eHRhYwSQbF7s+QrsD5g+hSmh/Ylpk4jJJvCd1vGGSxlr6tn50zHRZTX0QJt2zp0AymvjpMemwd70VWwpAOtX2tZ7rrLuwV+vgq+xuhMFe9KURedVKGflka8p7dDmhzHqa62EAr6McrGFtOhhYBIIMCafo53Mzp0Dv4DINSfDd6bfu9OJyu5U4ZswNgXyciro2fgK3/PnF7HRcMSGkl85B3kh1TPQI8TevY4f6jb+ovA+hCG/9MrE+T/CABbQIDAQAB' // 全局秘钥
   },
   mutations:{
