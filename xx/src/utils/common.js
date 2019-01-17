@@ -33,28 +33,13 @@ export function urlMsg() {
 };
 
 // 微信认证获取code
-export function wxAuth(to,apid) {
-   let appIds = null;
-    if(apid){
-        appIds = apid
-    }else{
-        appIds = appId()
-    }
-  // 判断是否为生产环境
-  let redirectUri = '';
-  if (window.location.hostname == url.testUrl) {
-    // 测试环境
-    redirectUri = url.dev_redirectUri
-  } else if (window.location.hostname == "pre.wehaicao.com") {
-    //    预发布
-    redirectUri = url.pre_redirectUri
-  } else {
-    // 生产环境
-    redirectUri = url.prod_redirectUri
-  }
-  let state = "STATE"
-  let strUrl = "http://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appIds + "&redirect_uri=" + redirectUri + to + "&response_type=code&scope=snsapi_userinfo&state=" + state + "#wechat_redirect";
+export function wxAuth() {
 
+  // 判断是否为生产环境
+  let redirectUri = 'http%3a%2f%2fh5.redview.com.cn%2findex.html%23%2fcountDown';
+  let appIds = 'wx3c1a020f0ec2a5cd';
+  let state = "STATE"
+  let strUrl = "http://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appIds + "&redirect_uri=" + redirectUri + "&response_type=code&scope=snsapi_userinfo&state=" + state + "#wechat_redirect";
   if (!store.getters.app.code) {
     Indicator.open();
     window.location.href = strUrl;

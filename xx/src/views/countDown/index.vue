@@ -127,6 +127,7 @@ export default {
       },
       false
     );
+      $("body a").css({ 'height': "0 !important",'overflow':'hidden'});
   },
   created() {
     let sUserAgent = navigator.userAgent.toLowerCase();

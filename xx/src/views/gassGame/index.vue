@@ -18,9 +18,9 @@
   </div>
 </template>
 <script>
-import { wxCharts } from "@/utils/common";
 import { MessageBox } from "mint-ui";
 import { setInterval, clearInterval, setTimeout } from "timers";
+import { wxAuth, urlMsg, formatSeconds, wxCharts, appId } from "@/utils/common";
 // import aplayer from "vue-aplayer";
 export default {
   data() {
@@ -48,10 +48,15 @@ export default {
         $(".fish").css({ left: nu + "rem" });
         $(".color-loading").css({ left: nus + "rem" });
       }, 18);
+    },
+    // 获取code码
+    wxAuths(){
+       wxAuth() 
     }
   },
   mounted() {
     this.loading();
+    this.wxAuths()
   },
   created() {
     // let sUserAgent = navigator.userAgent.toLowerCase();
