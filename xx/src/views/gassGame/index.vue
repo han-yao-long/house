@@ -1,5 +1,7 @@
 <template>
   <div id="guss_loading">
+    <!-- 视频播放器 -->
+    <video v-if="isVideo" id="video" ref="video" :src="audioVoice" autoplay="autoplay"></video>
     <img class="head" src="@/assets/gassgame/head.png" alt>
     <div class="bodys">
       <div v-if="isLoading">
@@ -11,25 +13,39 @@
           </div>
         </div>
       </div>
-      <div>
-          
+      <div v-else>
+        <div class="fengmian-all">
+          <fengmian @openVideos="openvideoss" @openAlert="isAlert=true"></fengmian>
+        </div>
       </div>
+    </div>
+    <div v-show="isAlert" class="alert-all">
+      <alerts @closeAlsert="isAlert=false"></alerts>
     </div>
   </div>
 </template>
 <script>
 import { MessageBox } from "mint-ui";
 import { setInterval, clearInterval, setTimeout } from "timers";
+<<<<<<< HEAD
 import { wxAuth, urlMsg, formatSeconds, wxCharts, appId } from "@/utils/common";
+=======
+import fengmian from "./fengmian.vue";
+import alerts from "./alert.vue";
+>>>>>>> 186b1ffeeed3ffafbdbe66d184e8139710e0263e
 // import aplayer from "vue-aplayer";
 export default {
   data() {
     return {
-      isLoading: false  //是否显示loading页面
+      isLoading: true, //是否显示loading页面
+      isAlert: false,
+      audioVoice: require("./../../../static/audio.mp4"),
+      isVideo: false
     };
   },
   components: {
-    // aplayer
+    fengmian,
+    alerts
   },
   methods: {
     loading() {
@@ -49,9 +65,29 @@ export default {
         $(".color-loading").css({ left: nus + "rem" });
       }, 18);
     },
+<<<<<<< HEAD
     // 获取code码
     wxAuths(){
        wxAuth() 
+=======
+    openvideoss() {
+      this.isVideo = true;
+      let that = this;
+      setTimeout(function() {
+        that.playMusic();
+      }, 1000);
+    },
+    playMusic: function() {
+      let musicPl = this.$refs.video;
+      let that = this;
+      musicPl.addEventListener(
+        "ended",
+        function() {
+         that.$router.push('/zhuce')
+        },
+        false
+      );
+>>>>>>> 186b1ffeeed3ffafbdbe66d184e8139710e0263e
     }
   },
   mounted() {
@@ -136,6 +172,23 @@ p {
       }
     }
   }
+}
+.fengmian-all {
+  position: absolute;
+  bottom: 0;
+}
+.alert-all {
+  z-index: 999;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+#video {
+  position: absolute;
+  left: 0;
+  width: 7.5rem;
+  height: 100vh;
+  z-index: 6666;
 }
 </style>
 
