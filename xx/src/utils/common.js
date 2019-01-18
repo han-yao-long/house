@@ -33,28 +33,12 @@ export function urlMsg() {
 };
 
 // 微信认证获取code
-export function wxAuth(to,apid) {
-   let appIds = null;
-    if(apid){
-        appIds = apid
-    }else{
-        appIds = appId()
-    }
+export function wxAuth() {
   // 判断是否为生产环境
-  let redirectUri = '';
-  if (window.location.hostname == url.testUrl) {
-    // 测试环境
-    redirectUri = url.dev_redirectUri
-  } else if (window.location.hostname == "pre.wehaicao.com") {
-    //    预发布
-    redirectUri = url.pre_redirectUri
-  } else {
-    // 生产环境
-    redirectUri = url.prod_redirectUri
-  }
+  let redirectUri = 'http%3a%2f%2fh5.redview.com.cn%2findex.html%23%2fgassgame';
+  let appIds = 'wx3c1a020f0ec2a5cd';
   let state = "STATE"
-  let strUrl = "http://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appIds + "&redirect_uri=" + redirectUri + to + "&response_type=code&scope=snsapi_userinfo&state=" + state + "#wechat_redirect";
-
+  let strUrl = "http://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appIds + "&redirect_uri=" + redirectUri + "&response_type=code&scope=snsapi_userinfo&state=" + state + "#wechat_redirect";
   if (!store.getters.app.code) {
     Indicator.open();
     window.location.href = strUrl;
@@ -157,60 +141,44 @@ export function wxCharts(shareTitle, descContent, lineLink, imgUrl) {
 }
 
 // 获取appId
-export function appId() {
-  let appId = ''
-  if (window.location.hostname == 'test-card.zuanliantech.com') {
-    // 测试环境
-    appId = 'wx303bd1d29db76d97';
-  }
-  else if(window.location.hostname == 'wehaicao.com'||window.location.hostname == 'grassbooker.com'){
-    appId = 'wx8ec0673d2b219cc3'; // 公众号AppID
-  }
-  else {
-    // 生产环境
-    appId = 'wx71e7a902969b01f4'; // 公众号AppID
-  };
-  // 判断路径后面是否有appid
-  // let cookieAppid = cookie.get('appId');
-  // if (cookieAppid) { //如果appId存在
-  //   appId = cookieAppid
-  // }
-  console.log(appId, 'appid出现')
-  return appId
-}
+// export function appId() {
+//   let appId = ''
+//   if (window.location.hostname == 'test-card.zuanliantech.com') {
+//     // 测试环境
+//     appId = 'wx303bd1d29db76d97';
+//   } else if (window.location.hostname == 'wehaicao.com' || window.location.hostname == 'grassbooker.com') {
+//     appId = 'wx8ec0673d2b219cc3'; // 公众号AppID
+//   } else {
+//     // 生产环境
+//     appId = 'wx71e7a902969b01f4'; // 公众号AppID
+//   };
+//   // 判断路径后面是否有appid
+//   // let cookieAppid = cookie.get('appId');
+//   // if (cookieAppid) { //如果appId存在
+//   //   appId = cookieAppid
+//   // }
+//   console.log(appId, 'appid出现')
+//   return appId
+// }
 
 // 获取userId
-export function userId() {
-  let userId = ''
-  // 第一次进入项目
-  if (urlMsg().userId) {
-    cookie.set('userId', urlMsg().userId);
-  }
-  // 重定向后进入项目 获取userId
-  if (cookie.get('userId')) { //如果userId存在
-    userId = cookie.get('userId')
-  }
-  return userId
-}
+// export function userId() {
+//   let userId = ''
+//   // 第一次进入项目
+//   if (urlMsg().userId) {
+//     cookie.set('userId', urlMsg().userId);
+//   }
+//   // 重定向后进入项目 获取userId
+//   if (cookie.get('userId')) { //如果userId存在
+//     userId = cookie.get('userId')
+//   }
+//   return userId
+// }
 
-// 获取articleId
-export function articleId() {
-  let articleId = ''
-  // 第一次进入项目
-  if (urlMsg().articleId) {
-    cookie.set('articleId', urlMsg().articleId);
-  }
-  // 重定向后进入项目 获取articleId
-  if (cookie.get('articleId')) { //如果articleId存在
-    articleId = cookie.get('articleId')
-  }
-  return articleId
-}
 // 唤醒app,无app则跳入应用宝
 export function goAndDown() {
   goAddDownYingYongBao()
 }
-
 // 时间倒计时
 export function formatSeconds(value) {
   var secondTime = parseInt(value); // 秒
@@ -261,15 +229,15 @@ export function formatSeconds(value) {
   return result;
 }
 export function randomNum(minNum, maxNum) {
-    switch (arguments.length) {
-      case 1:
-        return parseInt(Math.random() * minNum + 1, 10);
-        break;
-      case 2:
-        return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
-        break;
-      default:
-        return 0;
-        break;
-    }
+  switch (arguments.length) {
+    case 1:
+      return parseInt(Math.random() * minNum + 1, 10);
+      break;
+    case 2:
+      return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+      break;
+    default:
+      return 0;
+      break;
   }
+}

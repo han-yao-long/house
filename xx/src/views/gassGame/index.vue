@@ -25,11 +25,12 @@
   </div>
 </template>
 <script>
-import { wxCharts } from "@/utils/common";
 import { MessageBox } from "mint-ui";
 import { setInterval, clearInterval, setTimeout } from "timers";
+import { wxAuth, urlMsg, formatSeconds, wxCharts, appId } from "@/utils/common";
 import fengmian from "./fengmian.vue";
 import alerts from "./alert.vue";
+import { wx_token } from "@/api/common.js";
 // import aplayer from "vue-aplayer";
 export default {
   data() {
@@ -37,7 +38,11 @@ export default {
       isLoading: true, //是否显示loading页面
       isAlert: false,
       audioVoice: require("./../../../static/audio.mp4"),
-      isVideo: false
+      isVideo: false,
+      userMsg: {
+        is_new_user: false,
+        open_id: "oJQPhjhEFluUcmTGcbDCsnUwRIKY"
+      }
     };
   },
   components: {
@@ -62,9 +67,21 @@ export default {
         $(".color-loading").css({ left: nus + "rem" });
       }, 18);
     },
+
+    // 获取code码
+    wxAuths() {
+      let code = urlMsg().code;
+      if (code) {
+        this.wxtoken(code);
+      } else {
+        wxAuth();
+      }
+    },
     openvideoss() {
-      this.isVideo = true;
+      // this.isVideo = true;
+      // this.$refs.video.play();
       let that = this;
+
       setTimeout(function() {
         that.playMusic();
       }, 1000);
@@ -72,17 +89,38 @@ export default {
     playMusic: function() {
       let musicPl = this.$refs.video;
       let that = this;
-      musicPl.addEventListener(
-        "ended",
-        function() {
-         that.$router.push('/zhuce')
-        },
-        false
-      );
+      console.log(1323);
+      if (that.userMsg.is_new_user) {
+        that.$router.push({ path: "/zhuce", query: this.userMsg });
+      } else {
+        that.$router.push({ path: "/updateimg", query: this.userMsg });
+      }
+      // musicPl.addEventListener(
+      //   "ended",
+      //   function() {
+      //     if (that.userMsg.is_new_user) {
+      //       that.$router.push({ path: "/updateimg", query: this.this.userMsg });
+      //     } else {
+      //       that.$router.push({ path: "/zhuce", query: this.this.userMsg });
+      //     }
+      //   },
+      //   false
+      // );
+    },
+    // 获取用户openid
+    wxtoken() {
+      let code = "061OJ7UQ1Km1e31ynwTQ1OxcUQ1OJ7Up";
+      let data = { code };
+      wx_token(data).then(res => {
+        console.log(res);
+        this.userMsg = res.data;
+      });
     }
   },
   mounted() {
     this.loading();
+    // this.wxtoken();
+    // this.wxAuths();
   },
   created() {
     // let sUserAgent = navigator.userAgent.toLowerCase();

@@ -4,8 +4,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/countDown',
       component: () => import('@/views/countDown/index')
     }, //这里是猜拳
@@ -20,6 +19,10 @@ export default new Router({
     {
       path: '/gassgame',
       component: () => import('@/views/gassGame/index')
+    },
+    {
+      path: '/updateimg',
+      component: () => import('@/views/updateimg/index')
     },
     {
       path: '*',
