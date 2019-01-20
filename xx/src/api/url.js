@@ -12,5 +12,7 @@ module.exports = {
   upload_images :"/api/user_lotter_records/upload_images",
   address:'/api/address'  ,    //地址
   show_images:'/api/user_lotter_records/show_images',     //显示图片
-  win_prizes:'/api/user_lotteries/luck_draw'
+  win_prizes:'/api/user_lotteries/luck_draw',
+  rank_list_desc:'/api/user_lotter_records/rank_list_desc',
+  changeUier:'/api/users/'
 }

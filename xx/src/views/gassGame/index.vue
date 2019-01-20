@@ -1,7 +1,8 @@
 <template>
   <div id="guss_loading">
+    <img @click="plays" class="music" src="@/assets/countDown/music.png" alt>
     <!-- 视频播放器 -->
-    <video v-if="isVideo" id="video" ref="video" :src="audioVoice" autoplay="autoplay"></video>
+   <div class="videobod"> <video x5-video-player-type="h5" x5-video-player-fullscreen="true" v-if="true" id="video" ref="video" :src="audioVoice"></video></div>
     <img class="head" src="@/assets/gassgame/head.png" alt>
     <div class="bodys">
       <div v-if="isLoading">
@@ -22,15 +23,20 @@
     <div v-show="isAlert" class="alert-all">
       <alerts @closeAlsert="isAlert=false"></alerts>
     </div>
+    <audio preload="auto" id="audioss" ref="audios" loop="loop">
+      <source :src="audioVoices" type="audio/mpeg">
+    </audio>
   </div>
 </template>
 <script>
-import { MessageBox } from "mint-ui";
+import axios from "axios";
+import { MessageBox,Indicator } from "mint-ui";
 import { setInterval, clearInterval, setTimeout } from "timers";
 import { wxAuth, urlMsg, formatSeconds, wxCharts, appId } from "@/utils/common";
 import fengmian from "./fengmian.vue";
 import alerts from "./alert.vue";
 import { wx_token } from "@/api/common.js";
+import { cookie } from "@/utils/cache.js";
 // import aplayer from "vue-aplayer";
 export default {
   data() {
@@ -38,16 +44,19 @@ export default {
       isLoading: true, //是否显示loading页面
       isAlert: false,
       audioVoice: require("./../../../static/audio.mp4"),
+      audioVoices: require("./../../../static/x1.mp3"),
       isVideo: false,
       userMsg: {
-        is_new_user: false,
-        open_id: "oJQPhjhEFluUcmTGcbDCsnUwRIKY"
-      }
+        is_new_user: true,
+        open_id: "",
+      },
+       canMusic: true,
     };
   },
   components: {
     fengmian,
-    alerts
+    alerts,
+    Indicator
   },
   methods: {
     loading() {
@@ -70,16 +79,37 @@ export default {
 
     // 获取code码
     wxAuths() {
+      const that = this;
       let code = urlMsg().code;
       if (code) {
         this.wxtoken(code);
+            document.addEventListener(
+      "WeixinJSBridgeReady",
+      function() {
+        that.$refs["audios"].play();
+        $(".music").toggleClass("rotate");
+      },
+      false
+    );
       } else {
         wxAuth();
       }
     },
+    plays() {
+      if (this.canMusic) {
+        this.$refs["audios"].pause();
+        this.canMusic = false;
+      } else {
+        this.$refs["audios"].play();
+        this.canMusic = true;
+      }
+      $(".music").toggleClass("rotate");
+    },
     openvideoss() {
-      // this.isVideo = true;
-      // this.$refs.video.play();
+      this.isVideo = true;
+      $("#video").css({ "z-index": 6666 });
+      this.$refs.video.play();
+      $("#video")[0].play();
       let that = this;
 
       setTimeout(function() {
@@ -89,45 +119,91 @@ export default {
     playMusic: function() {
       let musicPl = this.$refs.video;
       let that = this;
-      console.log(1323);
-      if (that.userMsg.is_new_user) {
-        that.$router.push({ path: "/zhuce", query: this.userMsg });
+      var sUserAgent = navigator.userAgent.toLowerCase();
+      var isIOS = sUserAgent.match(/(iPhone|iPod)/i) != null;
+      // if (that.userMsg.is_new_user) {
+      //   that.$router.push({ path: "/zhuce", query: this.userMsg });
+      // } else {
+      //   that.$router.push({ path: "/updateimg", query: this.userMsg });
+      // }
+      if (isIOS) {
+        musicPl.addEventListener(
+          "ended",
+          function() {
+            if (that.userMsg.is_new_user) {
+              that.$router.push({ path: "/zhuce", query: that.userMsg });
+            } else {
+              that.$router.push({ path: "/updateimg", query: that.userMsg });
+            }
+          },
+          false
+        );
       } else {
-        that.$router.push({ path: "/updateimg", query: this.userMsg });
+        // $("#video").on("ended", function() {
+        //   if (that.userMsg.is_new_user) {
+        //     that.$router.push({ path: "/zhuce", query: that.userMsg });
+        //   } else {
+        //     that.$router.push({ path: "/updateimg", query: that.userMsg });
+        //   }
+        // });
+        setTimeout(function(){
+          $('#video').css({"display":"none"});
+          $('.videobod').css({'display':'none'})
+     if (that.userMsg.is_new_user) {
+              that.$router.push({ path: "/zhuce", query: that.userMsg });
+            } else {
+              that.$router.push({ path: "/updateimg", query: that.userMsg });
+            }
+        },5000)
+
       }
-      // musicPl.addEventListener(
-      //   "ended",
-      //   function() {
-      //     if (that.userMsg.is_new_user) {
-      //       that.$router.push({ path: "/updateimg", query: this.this.userMsg });
-      //     } else {
-      //       that.$router.push({ path: "/zhuce", query: this.this.userMsg });
-      //     }
-      //   },
-      //   false
-      // );
     },
     // 获取用户openid
-    wxtoken() {
-      let code = "061OJ7UQ1Km1e31ynwTQ1OxcUQ1OJ7Up";
+    wxtoken(code) {
+      Indicator.open()
       let data = { code };
-      wx_token(data).then(res => {
-        console.log(res);
-        this.userMsg = res.data;
-      });
-    }
+      // wx_token(data).then(res => {
+      //   this.userMsg.is_new_user = res.is_new_user;
+      //   this.userMsg.open_id = res.open_id;
+      //   cookie.set('open_id',res.open_id);
+      // });
+      let that = this;
+      axios
+        .get("/api/api/users/get_access_token", {
+          params: {
+            code
+          }
+        })
+        .then(function(res) {
+              Indicator.close();
+          that.userMsg.is_new_user = res.data.is_new_user;
+          that.userMsg.open_id = res.data.open_id;
+          cookie.set("open_id", res.data.open_id);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
   },
   mounted() {
     this.loading();
-    // this.wxtoken();
-    // this.wxAuths();
+    this.wxAuths();
+    let that = this;
+    document.addEventListener(
+      "WeixinJSBridgeReady",
+      function() {
+        that.$refs["audios"].play();
+        $(".music").toggleClass("rotate");
+      },
+      false
+    );
   },
   created() {
-    // let sUserAgent = navigator.userAgent.toLowerCase();
-    // let isWechat = sUserAgent.indexOf("micromessenger") != -1;
-    // if (!isWechat) {
-    //   MessageBox.alert("请在微信内打开", "提示");
-    // }
+    let sUserAgent = navigator.userAgent.toLowerCase();
+    let isWechat = sUserAgent.indexOf("micromessenger") != -1;
+    if (!isWechat) {
+      MessageBox.alert("请在微信内打开", "提示");
+    }
   }
 };
 </script>
@@ -216,7 +292,44 @@ p {
   left: 0;
   width: 7.5rem;
   height: 100vh;
-  z-index: 6666;
+  z-index: -1;
+}
+.music {
+  position: absolute;
+  right: 0.3rem;
+  top: 0.3rem;
+}
+.rotate {
+  -webkit-animation: rotating 3s linear infinite;
+  -moz-animation: rotating 3s linear infinite;
+  -o-animation: rotating 3s linear infinite;
+  animation: rotating 3s linear infinite;
+}
+
+@-webkit-keyframes rotating {
+  from {
+    -webkit-transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes rotating {
+  from {
+    -moz-transform: rotate(0);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
 }
 </style>
 

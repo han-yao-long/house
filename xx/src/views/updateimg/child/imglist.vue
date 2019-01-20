@@ -18,7 +18,9 @@ export default {
      }
     },
     data(){
-        return{}
+        return{
+            urls:''
+        }
     },
     methods:{
         closeAlsert(){
@@ -50,8 +52,10 @@ li {
     margin-top: 0.3rem;
   }
   ul {
-    width: 5.24rem;
+    width: 5.28rem;
     margin-left: 0.67em;
+    max-height: 6rem;
+    overflow-y: auto;
     li {
       width: 2.36rem;
       height: 1.68rem;
@@ -62,7 +66,8 @@ li {
       img{
           display: block;
           width: 100%;
-          height: auto;
+          height: 100%;
+          display: block;
       }
     }
   }

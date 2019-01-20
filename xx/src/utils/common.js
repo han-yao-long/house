@@ -35,10 +35,10 @@ export function urlMsg() {
 // 微信认证获取code
 export function wxAuth() {
   // 判断是否为生产环境
-  let redirectUri = 'http%3a%2f%2fh5.redview.com.cn%2findex.html%23%2fgassgame';
+  let redirectUri = 'http%3a%2f%2fh5.redview.com.cn%2findex.html%23%2fcountDown';
   let appIds = 'wx3c1a020f0ec2a5cd';
   let state = "STATE"
-  let strUrl = "http://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appIds + "&redirect_uri=" + redirectUri + "&response_type=code&scope=snsapi_userinfo&state=" + state + "#wechat_redirect";
+  let strUrl = "http://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appIds + "&redirect_uri=" + redirectUri + "&response_type=code&scope=snsapi_userinfo&connect_redirect=1&state=" + state + "#wechat_redirect";
   if (!store.getters.app.code) {
     Indicator.open();
     window.location.href = strUrl;
@@ -240,4 +240,55 @@ export function randomNum(minNum, maxNum) {
       return 0;
       break;
   }
+}
+export function chooseImg(){
+  // 判断是否为生产环境
+  let redirectUri = 'http%3a%2f%2fh5.redview.com.cn%2findex.html%23%2fgassgame';
+  let appIds = 'wx3c1a020f0ec2a5cd';
+  let state = "STATE"
+  let strUrl = "http://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appIds + "&redirect_uri=" + redirectUri + "&response_type=code&scope=snsapi_userinfo&state=" + state + "#wechat_redirect";
+  if (!store.getters.app.code) {
+    Indicator.open();
+    window.location.href = strUrl;
+  }
+};
+// 微信分享
+export function getImgmsg(ticket) {
+  var timestamp = (new Date()).valueOf();
+  // 生成签名随机串y
+  var nonceStr = randomString(16);
+  // 签名
+  var signature;
+  //   原来
+  var url = window.location.href;
+
+  //    let url = lineLink;
+  // 现在
+  //   加密前获取拼接好的路径，
+  $.ajax({
+    url: `/rapi/wechats/jsapi_ticket?appid=${appId()}`,
+    type: 'get',
+    dataType: 'json',
+    success: function (resp) {
+      var string1 = "jsapi_ticket=" + ticket + "&noncestr=" + nonceStr + "&timestamp=" + timestamp + "&url=" + url
+      signature = hex_sha1(string1)
+      wx.config({
+        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: appId(), // 必填，公众号的唯一标识
+        timestamp: timestamp, // 必填，生成签名的时间戳
+        nonceStr: nonceStr, // 必填，生成签名的随机串
+        signature: signature, // 必填，签名，见附录1
+        jsApiList: [
+          "chooseImage", "uploadImage", "downloadImage"
+        ]
+      });
+    }
+  });
+  wx.checkJsApi({
+    jsApiList: ["chooseImage", "uploadImage", "downloadImage"] ,
+    success: function (res) {
+      // 以键值对的形式返回，可用的api值true，不可用为false
+      // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+    }
+  });
 }

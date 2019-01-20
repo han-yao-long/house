@@ -35,6 +35,9 @@ export function upload_imagess(target) {
     return request({
       url: url.upload_images,
       method: 'post',
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      },
       data: target
     })
   }
@@ -58,5 +61,19 @@ export function win_prizess(target) {
       params: target
     })
   }
+  // 排行
+  export function rank_list_desc(target) {
+    return request({
+      url: url.rank_list_desc,
+      params: target
+    })
+  }
+    // 排行
+    export function changeUiers(target) {
+      return request({
+        url: url.changeUier,
+        params: target
+      })
+    }
 
 

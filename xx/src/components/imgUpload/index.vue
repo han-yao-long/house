@@ -1,75 +1,19 @@
 <template>
-  <div>
-    <div class="img-box">
-      <div
-        class="img-group"
-        @touchmove="move"
-        @touchstart="down(index)"
-        @touchend="up"
-        ref="imgs"
-        :id="'img'+index"
-        v-if="viewImgs.length>0"
-        v-for="(i,index) in viewImgs"
-        :key="index"
-      >
-        <div class="del" @click="del(index)"></div>
-        <div v-if="index=='0'" class="main-img">主图</div>
-        <img :src="i" :key="i">
-      </div>
-      <div class="add-box" v-if="viewImgs.length <1">
-        <div class="add">
-          <input type="file" id="file" accept="image/png, image/gif, image/jpeg" @change="addImg">
-        </div>
-      </div>
+  <div class="img-box">
+    <div class="img-group" v-if="viewImgs.length>0" v-for="(i,index) in viewImgs" :key="index">
+      <div class="del" @click="del(index)"></div>
+      <div v-if="index == 0" class="main-img">主图</div>
+      <img :src="i" :key="i" />
     </div>
-    <div class="cut-box" v-if="showModal">
-      <div class="cut-top">
-        <div class="cancel">
-          <div @click="closeEdit">取消</div>
-        </div>
-        <div class="title">裁剪</div>
-        <div class="sure">
-          <div @click="uploadImg">确定</div>
-        </div>
-      </div>
-      <div class="cut-content">
-        <vueCropper
-          ref="cropper"
-          :img="option.img"
-          :outputSize="option.size"
-          :outputType="option.outputType"
-          :info="true"
-          :full="option.full"
-          :canMove="option.canMove"
-          :canMoveBox="option.canMoveBox"
-          :fixedBox="option.fixedBox"
-          :original="option.original"
-          :autoCrop="option.autoCrop"
-          :autoCropWidth="option.autoCropWidth"
-          :autoCropHeight="option.autoCropHeight"
-          :centerBox="option.centerBox"
-          :high="option.high"
-          :infoTrue="option.infoTrue"
-          :enlarge="option.enlarge"
-          :mode="option.mode"
-        ></vueCropper>
-      </div>
-      <div class="cut-bottom">
-        <div @click="cutImg('square')" class="square">
-          <div :class="proportion=='square'?'square-img':'square-img-gray'"></div>
-          <div :class="proportion=='square'?'text-color':''">方图</div>
-        </div>
-        <div @click="cutImg('long')" class="long">
-          <div :class="proportion=='long'?'long-img':'long-img'"></div>
-          <div :class="proportion=='long'?'text-color':''">长图</div>
-        </div>
+    <div class="add-box" v-if="viewImgs.length <1">
+      <div class="add">
+        <input type="file" accept="image/*" @change="addImg">
       </div>
     </div>
   </div>
 </template>
 
 <script>
-const width = document.body.clientWidth * 0.8; //屏幕宽度
 import { VueCropper } from "vue-cropper";
 import conmon from "@/api/common"; // 公共api
 export default {
@@ -78,130 +22,96 @@ export default {
     VueCropper
   },
   props: {
-    clearImg: {
-      type: Boolean,
-      default: false
-    }
+    index: Number
   },
-  data() {
+  data: function () {
+    const width = document.body.clientWidth * 0.8; //屏幕宽度
+
     return {
+      width: width,
       viewImgs: [], // 预览图
-      imgs: [], // 图片流
       file: [],
       showModal: false,
-      option: {
-        img: "",
-        size: 1,
-        full: true,
-        outputType: "jpeg || png || web",
-        canMove: true,
-        fixedBox: true,
-        original: false,
-        canMoveBox: true,
-        autoCrop: true,
-        // 只有自动截图开启 宽度高度才生效
-        autoCropWidth: width,
-        autoCropHeight: width,
-        centerBox: true,
-        high: true,
-        cropData: {},
-        enlarge: 1,
-        mode: "cover"
-      },
-      proportion: "square"
+      proportion: "square",
+      bobl:[]
     };
   },
-  watch: {
-    clearImg: function(res) {
-      if (res) {
-           this.imgs = [];
-      this.viewImgs = [];
-         this.file =[]
-      this.newImgs();
-     
-      }
-    }
-  },
-  mounted() {},
   methods: {
-    // 图片比例选择
-    cutImg(target) {
-      if (target == "square") {
-        this.option.autoCropWidth = width;
-        this.option.autoCropHeight = width;
-      } else {
-        this.option.autoCropWidth = width;
-        this.option.autoCropHeight = width / 0.75;
-      }
-      this.proportion = target;
-    },
-    // 图片编辑
-    edit(i) {
-      this.showModal = true;
-      // this.option.img='http://cdn.xyxiao.cn/Landscape_3.jpg'
-      this.option.img = i;
-    },
-    closeEdit() {
-      this.showModal = false;
-      var file = $("#file")[0];
-      file.value = "";
-    },
     // 图片添加
     addImg(e) {
       let file = e.target.files[0];
-      console.log(file.size);
       this.file = e.target.files[0];
       let _URL = window.URL || window.webkitURL;
-      this.option.img = _URL.createObjectURL(file);
-      this.showModal = true;
-    },
-    // 图片上传
-    uploadImg() {
-      this.$refs.cropper.getCropBlob(data => {
-        let img = data;
-        let _URL = window.URL || window.webkitURL;
-        this.viewImgs.push(_URL.createObjectURL(img));
-        this.imgs.push(data);
-        this.showModal = false;
-        var file = $("#file")[0];
-        file.value = "";
-        this.newImgs();
+      this.viewImgs.push(_URL.createObjectURL(file));
 
-        // let file= new File([data], Math.random(),{type:data.type}); // 创建file 对象
-        // let param = new FormData(); //创建form对象
-        // param.append('file',file);//通过append向form对象添加数据
-        // this.showModal=false
-        // this.$vux.loading.show({
-        //   text: 'Loading'
-        // })
-        // conmon.upLoad_single(param).then(res=>{
-        //   this.imgs.push(res.data)
-        //   // 清空input记录
-        //   var file = $('#file')[0];
-        //   file.value = '';
-        //   this.newImgs()
-        //   this.$vux.loading.hide()
-        // })
-      });
+          let reader = new FileReader();
+        reader.readAsDataURL(file);
+                reader.onload = (loadEvent) => {
+                    var url = loadEvent.target.result;
+                    var img = new Image();
+                    img.src = url;
+                    var bobl = this.resizeMe(img, 200, 200);
+                    this.bobl = bobl;
+                    console.log(this.bobl,this.file)
+                }
+      this.newImgs();
     },
     // 删除图片
     del(index) {
-      this.imgs.splice(index, 1);
       this.viewImgs.splice(index, 1);
       this.newImgs();
-      this.file =[]
+      this.file = [];
     },
     newImgs() {
-      this.$emit("getNew", [this.imgs, this.file]);
+      this.$emit("getNew", {
+        index: this.index,
+        file: this.file,
+        bobl:this.bobl
+      });
     },
-    // 点击事件
-    down(index) {
-      console.log(event);
+    clearImg() {
+      this.viewImgs = [];
+      this.file = [];
     },
-    // 移动事件
-    move(i) {},
-    // 放开事件
-    up() {}
+         resizeMe: function (img, max_width, max_height) {
+            var canvas = document.createElement('canvas');
+
+            var width = img.width;
+            var height = img.height;
+
+            // 宽高压缩
+            /*if (width > height) {
+                if (width > max_width) {
+                    height = Math.round(height *= max_width / width);
+                    width = max_width;
+                }
+            } else {
+                if (height > max_height) {
+                    width = Math.round(width *= max_height / height);
+                    height = max_height;
+                }
+            }*/
+
+            canvas.width = width;
+            canvas.height = height;
+            var ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0, width, height);
+            let base64s = canvas.toDataURL("image/jpeg", 0.3);
+          
+            return   this.dataURLtoBlob(base64s)
+        }   ,
+        // base64转bole
+   dataURLtoBlob(dataurl) {
+        var arr = dataurl.split(','),
+            mime = arr[0].match(/:(.*?);/)[1],
+            bstr = atob(arr[1]),
+            n = bstr.length,
+            u8arr = new Uint8Array(n);
+        while (n--) {
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+        return new Blob([u8arr], { type: mime });
+    }
   }
 };
 </script>
@@ -211,7 +121,7 @@ export default {
   display: flex;
   flex-flow: wrap;
   .img-group {
-    width: 50%;
+    width: 100%;
     height: auto;
     position: relative;
     .del {
@@ -219,10 +129,10 @@ export default {
       background-size: 100%;
       width: 0.3rem;
       height: 0.3rem;
-      position: relative;
+      position: absolute;
       margin-bottom: -0.18rem;
-      left: -08rem;
-      z-index: 10;
+      left: 0rem;
+      z-index: 6;
     }
     .main-img {
       position: absolute;
@@ -239,8 +149,8 @@ export default {
       left: 0;
       border-radius: 0.08rem;
       position: relative;
-      width: 96%;
-      height: 22vw;
+      width: 2.5rem;
+      height: 3rem;
       /*pointer-events: none;*/
       /*vertical-align: sub;*/
       /*-webkit-touch-callout: none;*/
