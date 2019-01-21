@@ -71,6 +71,7 @@ export default {
       if (code) {
         this.wxtoken(code);
       } else {
+        //   微信token验证
         wxAuth();
       }
     },
@@ -202,7 +203,7 @@ p {
   position: absolute;
   left: 0;
   width: 7.5rem;
-  height: 100vh;
+  height: 100%;
   z-index: 6666;
 }
 </style>

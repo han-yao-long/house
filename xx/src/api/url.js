@@ -10,5 +10,6 @@ module.exports = {
   wxtoken: '/api/users/get_access_token',
   sign: 'api/users/register_user', //注册,
   upload_images :"/api/user_lotter_records/upload_images",
-  address:'/api/address'      //地址
+  address:'/api/address' ,     //地址
+  win_prizes:'/api/address'      //地址
 }

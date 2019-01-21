@@ -1,10 +1,12 @@
 <template>
   <div class="fengmian">
     <img class="light" src="@/assets/gassgame/fengmian-leight.png" alt>
-    <img class="tit" src="@/assets/gassgame/fengmian-tit.png" alt>
+    <!-- <img class="tit" src="@/assets/gassgame/fengmian-tit.png" alt> -->
     <img class="heads" src="@/assets/gassgame/heads.png" alt>
+    <div class="tit">
+        <div @click="openVideo" class="doms"></div>
+    </div>
     <img @click="openAtert" class="btn" src="@/assets/gassgame/fengmian-btn.png" alt>
-    <div @click="openVideo" class="doms"></div>
   </div>
 </template>
 <script>
@@ -36,9 +38,11 @@ export default {
     left: 0;
   }
   .tit {
-    width: 100%;
-    height: auto;
+    width: 7.5rem;
+    height: 4rem;
     margin-top: 1rem;
+    background: url('./../../assets/gassgame/fengmian-tit.png') no-repeat center;
+    background-size: 100% 100%;
     z-index: 1;
     position: relative;
   }
