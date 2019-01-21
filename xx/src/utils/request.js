@@ -19,16 +19,18 @@ const codeMessage = {
   504: '网络超时',
   505: 'http版本不支持该请求'
 };
+axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
 // 创建axios实例
 const service = axios.create({
   baseURL: process.env.BASE_API, // api的base_url
-  timeout: 20000 // 请求超时时间
-})
+  timeout: 200000 // 请求超时时间
+});
+
 // request拦截器
 service.interceptors.request.use(config => {
-  config.headers={
-    'Content-Type':'application/json;charset=UTF-8',
-    'token':getToken() // 入参统一添加token
+  const token = getToken();
+  if (token) {
+    config.headers["token"] = token;  // 入参统一添加token
   }
   return config
 }, error => {
@@ -68,7 +70,9 @@ service.interceptors.response.use(
               },3000)
               break;
           }
-          Toast(response.data.msg)
+          if (response.data.msg) {
+            Toast(response.data.msg)
+          }
         }
         // return false
         return response.data

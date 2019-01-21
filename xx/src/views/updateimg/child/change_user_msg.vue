@@ -1,5 +1,5 @@
 <template>
-  <div id="zuce">
+  <div id="ceshi">
     <img @click="plays" class="music" src="@/assets/countDown/music.png" alt>
     <div class="bodys">
       <ul>
@@ -56,7 +56,7 @@
   </div>
 </template>
 <script>
-import { sign, addresss } from "@/api/common.js";
+import { sign, addresss,changeUiers } from "@/api/common.js";
 import axios from "axios";
 import { Indicator, MessageBox, Picker, Button, Popup } from "mint-ui";
 import { cookie } from "@/utils/cache.js";
@@ -86,8 +86,8 @@ export default {
       provinces: [],
       provinces1: [],
       provinces2: [],
-      audioVoice: require("./../../../static/x1.mp3"),
-      canMusic:false
+      audioVoice: require("./../../../../static/x1.mp3"),
+      canMusic: false
     };
   },
   methods: {
@@ -106,12 +106,9 @@ export default {
         this.msg.address_id != ""
       ) {
         if (!/^[1][0-9]{10}$/.test(this.phone)) {
-          sign(this.msg).then(res => {
+          changeUiers(this.msg).then(res => {
             if ((res.status = "200")) {
-              this.$router.push({
-                path: "/updateimg",
-                query: this.open_id
-              });
+               Toast('修改成功！')
             } else {
               this.msg = {
                 phone: "",
@@ -223,6 +220,41 @@ export default {
     },
     closepinker() {
       this.isPinker = false;
+    },
+    getuserInfo() {
+      //获取用户信息
+      let that = this;
+      axios
+        .get("/api/api/users/show_info ", {
+          params: { open_id: this.msg.open_id }
+        })
+        .then(function(res) {
+          this.msg.name = res.data.name;
+          this.msg.phone = res.data.phone;
+          this.msg.job_number = res.data.job_number;
+          this.msg.address_id = res.data.town_id;
+          let bigcity_id = res.data.province_id;
+          let twocity_id= res.data.city_id;
+          let smallcity_id = res.data.town_id;
+            this.provinces.forEach(element1 => {
+                if (element1.id == bigcity_id) {
+                 this.bigcity = element1.name;
+                    element1.city.forEach(element2 => {
+                    if (element2.id == twocity_id) {
+                       this.twocity = element2.name;
+                            element2.city.forEach(element3 => {
+                            if (element3.id == smallcity_id) {
+                            this.smallcity = element3.name;
+                            }})
+                    }
+                    });
+                }
+            });
+         
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     }
   },
   mounted() {
@@ -284,12 +316,12 @@ ul {
   padding: 0;
   list-style: none;
 }
-#zuce {
+#ceshi {
   width: 7.5rem;
   height: 100vh;
   margin: 0 auto;
   font-family: TSZT;
-  background: url("./../../assets/zc/zc-bg.png") no-repeat center;
+  background: url("./../../../assets/zc/zc-bg.png") no-repeat center;
   background-size: 100% 100%;
   position: relative;
   .bodys {
@@ -323,7 +355,7 @@ ul {
 .btn {
   width: 2rem;
   height: 1rem;
-  background: url("./../../assets/zc/tijiao.png") no-repeat center;
+  background: url("./../../../assets/zc/tijiao.png") no-repeat center;
   background-size: 100% 100%;
   margin: 0.3rem auto 0;
 }
@@ -375,3 +407,4 @@ ul {
   }
 }
 </style>
+
