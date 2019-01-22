@@ -1,6 +1,6 @@
 <template>
-  <div id="ceshi">
-    <img @click="plays" class="music" src="@/assets/countDown/music.png" alt>
+  <div id="ceshi" @click.stop>
+    <span class="close" @click="closeAlsert"></span>
     <div class="bodys">
       <ul>
         <li>
@@ -31,7 +31,7 @@
       <!-- <div v-show="isPinker" style="background:#fff">
         <mt-picker
           @change="onValuesChange"
-          value-key="cName" 
+          value-key="cName"
           ref="pinkers"
           :slots="slots"
         >
@@ -56,11 +56,17 @@
   </div>
 </template>
 <script>
-import { sign, addresss,changeUiers } from "@/api/common.js";
+import { sign, addresss } from "@/api/common.js";
 import axios from "axios";
 import { Indicator, MessageBox, Picker, Button, Popup } from "mint-ui";
 import { cookie } from "@/utils/cache.js";
 export default {
+  props: {
+    modal: {
+      type: Boolean,
+      default: false
+    }
+  },
   components: {
     Indicator,
     MessageBox,
@@ -82,6 +88,9 @@ export default {
       bigcity: "",
       twocity: "",
       smallcity: "",
+      province_id: "",
+      city_id: "",
+      town_id: "",
       level: -1,
       provinces: [],
       provinces1: [],
@@ -92,33 +101,73 @@ export default {
   },
   methods: {
     signs() {
-      this.provinces2.forEach(a => {
-        console.log(a);
-        if (this.smallcity == a.name) {
-          this.msg.address_id = a.id;
+      this.province_id = "";
+      this.city_id = "";
+      this.town_id = "";
+      this.provinces.forEach(a => {
+        if (this.bigcity == a.name) {
+          this.province_id = a.id;
+          a.city.forEach(b => {
+            if (this.twocity == b.name) {
+              this.city_id = b.id;
+              b.town.forEach(c => {
+                if (this.smallcity == c.name) {
+                  this.town_id = c.id;
+                }
+              });
+            }
+          });
         }
       });
-      console.log(this.msg);
       if (
         this.msg.phone != "" &&
         this.msg.name != "" &&
         this.msg.job_number != "" &&
-        this.msg.address_id != ""
+        this.msg.address_id != "" &&
+        this.province_id != "" &&
+        this.city_id != "" &&
+        this.town_id != ""
       ) {
         if (!/^[1][0-9]{10}$/.test(this.phone)) {
-          changeUiers(this.msg).then(res => {
-            if ((res.status = "200")) {
-               Toast('修改成功！')
-            } else {
-              this.msg = {
-                phone: "",
-                name: "",
-                job_number: "",
-                address_id: "1", //三级地区得id
-                open_id: ""
-              };
-            }
-          });
+            console.log(this.msg.open_id)
+          axios
+            .put("/api/api/users/" + this.msg.open_id, {
+              name: this.msg.name,
+              phone: this.msg.phone,
+              job_number: this.msg.job_number,
+              province_id: this.msg.province_id,
+              city_id: this.city_id,
+              town_id: this.town_id
+            })
+            .then(res => {
+              console.log(res);
+              if ((res.status = "200")) {
+                this.$toast({
+                  message: "修改成功！"
+                });
+                // Toast('')
+                this.$emit("close");
+              } else {
+                this.msg = {
+                  phone: "",
+                  name: "",
+                  job_number: ""
+                };
+              }
+            });
+          // changeUiers(this.msg).then(res => {
+          //   if ((res.status = "200")) {
+          //      Toast('修改成功！')
+          //   } else {
+          //     this.msg = {
+          //       phone: "",
+          //       name: "",
+          //       job_number: "",
+          //       address_id: "1", //三级地区得id
+          //       open_id: ""
+          //     };
+          //   }
+          // });
         } else {
           this.$toast({
             message: "请输入正确的手机号"
@@ -159,7 +208,7 @@ export default {
       this.isPinker = true;
       this.twocity = "";
       this.smallcity = "";
-      this.msg.open_id = cookie.get("open_id");
+    //   this.msg.open_id = cookie.get("open_id");
       this.provinces;
       let arr = this.provinces.map(res => {
         return res.name;
@@ -218,6 +267,10 @@ export default {
         }
       });
     },
+    closeAlsert() {
+        console.log(13231)
+      this.$emit("closeAlsert");
+    },
     closepinker() {
       this.isPinker = false;
     },
@@ -234,31 +287,72 @@ export default {
           this.msg.job_number = res.data.job_number;
           this.msg.address_id = res.data.town_id;
           let bigcity_id = res.data.province_id;
-          let twocity_id= res.data.city_id;
+          let twocity_id = res.data.city_id;
           let smallcity_id = res.data.town_id;
-            this.provinces.forEach(element1 => {
-                if (element1.id == bigcity_id) {
-                 this.bigcity = element1.name;
-                    element1.city.forEach(element2 => {
-                    if (element2.id == twocity_id) {
-                       this.twocity = element2.name;
-                            element2.city.forEach(element3 => {
-                            if (element3.id == smallcity_id) {
-                            this.smallcity = element3.name;
-                            }})
+          this.provinces.forEach(element1 => {
+            if (element1.id == bigcity_id) {
+              this.bigcity = element1.name;
+              element1.city.forEach(element2 => {
+                if (element2.id == twocity_id) {
+                  this.twocity = element2.name;
+                  element2.city.forEach(element3 => {
+                    if (element3.id == smallcity_id) {
+                      this.smallcity = element3.name;
                     }
-                    });
+                  });
                 }
-            });
-         
+              });
+            }
+          });
         })
         .catch(function(error) {
           console.log(error);
         });
-    }
+    },
+    getuserInfoById() {
+      axios
+        .get("/api/api/users/" + this.msg.open_id + "/show_info")
+        .then(res => {
+          console.log(res);
+          this.msg.name = res.data.user.name;
+          this.msg.phone = res.data.user.phone;
+          this.msg.job_number = res.data.user.job_number;
+          this.msg.address_id = res.data.user.town_id;
+          let bigcity_id = res.data.user.province_id;
+          let twocity_id = res.data.user.city_id;
+          let smallcity_id = res.data.user.town_id;
+          this.provinces.forEach(element1 => {
+            if (element1.id == bigcity_id) {
+              this.bigcity = element1.name;
+              element1.city.forEach(element2 => {
+                if (element2.id == twocity_id) {
+                  this.twocity = element2.name;
+                  element2.town.forEach(element3 => {
+                    if (element3.id == smallcity_id) {
+                      this.smallcity = element3.name;
+                    }
+                  });
+                }
+              });
+            }
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    stopClick() {
+      return false;
+    },
+    // closeAlsert() {
+    //     console.log(13213)
+    //   this.$emit("closeAlsert");
+    // }
   },
   mounted() {
     let that = this;
+    this.msg.open_id = cookie.get("open_id");
+    // this.msg.open_id = 'oJQPhjkCi09UegN5D6G6j3Jvgd94'
     axios
       .get("/api/api/address", {
         params: {}
@@ -278,11 +372,13 @@ export default {
             textAlign: "center"
           }
         ];
+        if (that.modal === true) {
+          that.getuserInfoById();
+        }
       })
       .catch(function(error) {
         console.log(error);
       });
-    this.msg.open_id = cookie.get("open_id");
     //    addresss().then(res=>{
     //      this.provinces = res.provinces;
     //       let arr = res.provinces.map(res=>{
@@ -317,13 +413,13 @@ ul {
   list-style: none;
 }
 #ceshi {
-  width: 7.5rem;
-  height: 100vh;
-  margin: 0 auto;
-  font-family: TSZT;
-  background: url("./../../../assets/zc/zc-bg.png") no-repeat center;
+  width: 6.1rem;
+  height: 10rem;
+  background: url("./../../../assets/countDown/msg.png") no-repeat center;
   background-size: 100% 100%;
+  overflow: hidden;
   position: relative;
+  font-family: TSZT;
   .bodys {
     width: 100%;
     height: 80vh;
@@ -332,7 +428,7 @@ ul {
     overflow: hidden;
     ul {
       width: 4.9rem;
-      margin: 2rem auto 0;
+      margin: 1rem auto 0;
       li {
         color: #fdd000;
         font-size: 0.4rem;
@@ -357,7 +453,7 @@ ul {
   height: 1rem;
   background: url("./../../../assets/zc/tijiao.png") no-repeat center;
   background-size: 100% 100%;
-  margin: 0.3rem auto 0;
+  margin: 1rem auto 0;
 }
 .sure {
   position: absolute;
@@ -405,6 +501,16 @@ ul {
   to {
     -moz-transform: rotate(360deg);
   }
+}
+.close {
+  position: absolute;
+  top: 0.24rem;
+  right: 0.24rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: url("./../../../assets/countDown/close.png") no-repeat center;
+  background-size: 100% 100%;
+  z-index: 999;
 }
 </style>
 

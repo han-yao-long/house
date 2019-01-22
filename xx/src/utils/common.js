@@ -34,7 +34,7 @@ export function urlMsg() {
 
 // 微信认证获取code
 export function wxAuth() {
-  // 判断是否为生产环境
+//   判断是否为生产环境
   let redirectUri = 'http%3a%2f%2fh5.redview.com.cn%2findex.html%23%2fcountDown';
   let appIds = 'wx3c1a020f0ec2a5cd';
   let state = "STATE"
@@ -243,14 +243,14 @@ export function randomNum(minNum, maxNum) {
 }
 export function chooseImg(){
   // 判断是否为生产环境
-  let redirectUri = 'http%3a%2f%2fh5.redview.com.cn%2findex.html%23%2fgassgame';
-  let appIds = 'wx3c1a020f0ec2a5cd';
-  let state = "STATE"
-  let strUrl = "http://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appIds + "&redirect_uri=" + redirectUri + "&response_type=code&scope=snsapi_userinfo&state=" + state + "#wechat_redirect";
-  if (!store.getters.app.code) {
-    Indicator.open();
-    window.location.href = strUrl;
-  }
+  // let redirectUri = 'http%3a%2f%2fh5.redview.com.cn%2findex.html%23%2fgassgame';
+  // let appIds = 'wx3c1a020f0ec2a5cd';
+  // let state = "STATE"
+  // let strUrl = "http://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appIds + "&redirect_uri=" + redirectUri + "&response_type=code&scope=snsapi_userinfo&state=" + state + "#wechat_redirect";
+  // if (!store.getters.app.code) {
+  //   Indicator.open();
+  //   window.location.href = strUrl;
+  // }
 };
 // 微信分享
 export function getImgmsg(ticket) {

@@ -1,15 +1,15 @@
 <template>
   <div id="updata">
-    <img class="ppd"  @click="phb" src="@/assets/countDown/ppd.png" alt="">
+    <img class="ppd" @click="phb" src="@/assets/countDown/ppd.png" alt>
     <!-- <aplayer autoplay :music="musicList"></aplayer> -->
-      <img @click="plays" class="music" src="@/assets/countDown/music.png" alt>
+    <img @click="plays" class="music" src="@/assets/countDown/music.png" alt>
     <audio preload="auto" id="audioss" ref="audios" loop="loop">
       <source :src="audioVoice" type="audio/mpeg">
     </audio>
     <div v-if="isGetprize">
       <div v-if="!staying">
-         <img v-if="is_win" class="win" src="@/assets/gassgame/win.jpg" alt="">
-      <img v-if="!is_win" class="win" src="@/assets/gassgame/nowin.jpg" alt="">
+        <img v-if="is_win" class="win" src="@/assets/gassgame/win.jpg" alt>
+        <img v-if="!is_win" class="win" src="@/assets/gassgame/nowin.jpg" alt>
       </div>
     </div>
     <div class="bodys">
@@ -26,7 +26,8 @@
           </div>
         </div>
         <div class="updata" @click="pushimg"></div>
-       <div class="wingame" @click="winPrize"></div>
+        <div class="myMessage" @click="myMessage"></div>
+        <div class="wingame" @click="winPrize"></div>
         <div class="lookImg" @click="show_imagesss"></div>
       </div>
       <!-- 中奖页面 -->
@@ -37,11 +38,8 @@
           <p id="yaoyiyao">领取神秘好礼</p>
         </div>
         <div v-show="!staying">
-         <div v-if="is_win">
-         </div>
-         <div>
-        
-         </div>
+          <div v-if="is_win"></div>
+          <div></div>
         </div>
       </div>
     </div>
@@ -49,27 +47,27 @@
     <div v-show="isShowAlert" class="Mask" @click="closeAlsert">
       <imglist v-show="isImgList" :listImgs="listImg" @closeAlserts="closeAlsert"></imglist>
       <div v-show="isalertmsg" class="alertMsg">{{choujiang}}</div>
+      <changeUser :modal="true" v-if="isChange" @closeAlsert="closeAlsert"></changeUser>
       <paihang :paihangmsg="paihangmsg" v-if="ispaihang" @closeAlserts="closeAlsert"></paihang>
     </div>
   </div>
 </template>
 <script>
 import updata from "@/components/imgUpload/index.vue";
-import {chooseImg} from "@/utils/common.js";
+import { chooseImg } from "@/utils/common.js";
 import imglist from "./child/imglist.vue";
 import paihang from "./child/paihang.vue";
-import { Indicator } from 'mint-ui';
-import axios from 'axios';
-import {
-  randomString,
-  hex_sha1
-} from './../../utils/wxshare.js';
+import { Indicator } from "mint-ui";
+import changeUser from "./child/change_user_msg";
+import axios from "axios";
+import { randomString, hex_sha1 } from "./../../utils/wxshare.js";
 import wx from "weixin-js-sdk";
 import {
   upload_imagess,
   addresss,
   win_prizess,
-  show_imagess,rank_list_desc
+  show_imagess,
+  rank_list_desc
 } from "@/api/common"; // 公共api
 import { cookie } from "@/utils/cache.js";
 
@@ -77,7 +75,9 @@ export default {
   components: {
     updata,
     imglist,
-    paihang,Indicator
+    paihang,
+    Indicator,
+    changeUser
   },
   data() {
     return {
@@ -91,17 +91,18 @@ export default {
       is_win: true,
       isalertmsg: false,
       isGetprize: false, //展示获奖页面
-      staying:false,   //展示抽奖页面 false展示抽奖结果
-      ispaihang:false,
-      paihangmsg:{},
-       audioVoice: require("./../../../static/x1.mp3"),
-       canMusic:false,
-       bobl:[]
+      staying: false, //展示抽奖页面 false展示抽奖结果
+      ispaihang: false,
+      paihangmsg: {},
+      audioVoice: require("./../../../static/x1.mp3"),
+      canMusic: false,
+      bobl: [],
+      isChange: false
     };
   },
   methods: {
     getImgs(data) {
-      console.log('-------------------', data);
+      console.log("-------------------", data);
       this.arr[data.index] = data.file;
       this.bobl[data.index] = data.bobl;
     },
@@ -109,9 +110,10 @@ export default {
       this.isShowAlert = false;
       this.isImgList = false;
       this.isalertmsg = false;
-      this.ispaihang = false
+      this.ispaihang = false;
+      this.isChange = false;
     },
-        plays() {
+    plays() {
       if (this.canMusic) {
         this.$refs["audios"].pause();
         this.canMusic = false;
@@ -119,11 +121,14 @@ export default {
         this.$refs["audios"].play();
         this.canMusic = true;
       }
-       $('.music').toggleClass("rotate")
+      $(".music").toggleClass("rotate");
     },
-    phb(){
-      this.ispaihang =true;
-        this.isShowAlert = true;
+    phb() {
+      this.isImgList = false;
+      this.isalertmsg = false;
+      this.isChange = false;
+      this.ispaihang = true;
+      this.isShowAlert = true;
     },
     pushimg() {
       if (this.arr.length == 2) {
@@ -135,7 +140,7 @@ export default {
         Indicator.open();
         upload_imagess(param).then(res => {
           if (res.status == 200) {
-            this.arr.length =0;
+            this.arr.length = 0;
             Indicator.close();
             // this.isImgList = true;
           }
@@ -152,8 +157,8 @@ export default {
         open_id: this.open_id
       };
       show_imagess(data).then(res => {
-           this.isImgList = true;
-           this.isShowAlert = true;
+        this.isImgList = true;
+        this.isShowAlert = true;
         this.listImg = res.images;
       });
     },
@@ -169,9 +174,9 @@ export default {
       };
       win_prizess(data).then(res => {
         if (res.status == 200) {
-             this.isGetprize = true;
+          this.isGetprize = true;
           this.staying = true;
-          this.getmsg()
+          this.getmsg();
           // 跳入页面
           if (res.is_win) {
             let shake = 4000;
@@ -206,7 +211,7 @@ export default {
                   10000;
                 var status = document.getElementById("status");
                 if (speed > shake) {
-                   that.staying = false;
+                  that.staying = false;
                   that.is_win = true;
                 }
               }
@@ -215,7 +220,7 @@ export default {
               last_z = z;
             }
           } else {
-                   let shake = 4000;
+            let shake = 4000;
             let last_update = 0;
             let count = 0;
             let x = 0;
@@ -247,7 +252,7 @@ export default {
                   10000;
                 var status = document.getElementById("status");
                 if (speed > shake) {
-                   that.staying = false;
+                  that.staying = false;
                   that.is_win = false;
                 }
               }
@@ -263,21 +268,25 @@ export default {
         }
       });
     },
-    getmsg(){
-     let that = this;
-       axios
+    getmsg() {
+      let that = this;
+      axios
         .get("/api/api/user_lotter_records/rank_list_desc", {
           params: {
-            open_id:this.open_id
+            open_id: this.open_id
             //  open_id:'oJQPhjhEFluUcmTGcbDCsnUwsRIKY'
           }
         })
         .then(function(res) {
-         that.paihangmsg = res.data;
+          that.paihangmsg = res.data;
         })
         .catch(function(error) {
           console.log(error);
         });
+    },
+    myMessage() {
+      this.isShowAlert = true;
+      this.isChange = true;
     }
   },
   mounted() {
@@ -287,24 +296,24 @@ export default {
     //      this.paihangmsg = res
     // })
     let that = this;
-       axios
-        .get("/api/api/user_lotter_records/rank_list_desc", {
-          params: {
-            open_id:this.open_id
-            //  open_id:'oJQPhjhEFluUcmTGcbDCsnUwsRIKY'
-          }
-        })
-        .then(function(res) {
-         that.paihangmsg = res.data;
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-           document.addEventListener(
+    axios
+      .get("/api/api/user_lotter_records/rank_list_desc", {
+        params: {
+          open_id: this.open_id
+          //  open_id:'oJQPhjhEFluUcmTGcbDCsnUwsRIKY'
+        }
+      })
+      .then(function(res) {
+        that.paihangmsg = res.data;
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+    document.addEventListener(
       "WeixinJSBridgeReady",
       function() {
         that.$refs["audios"].play();
-         $('.music').toggleClass("rotate")
+        $(".music").toggleClass("rotate");
       },
       false
     );
@@ -348,35 +357,40 @@ p {
         justify-content: center;
       }
     }
-    .uddataall{
+    .uddataall {
       display: flex;
       justify-content: center;
       align-items: center;
-        .wingame {
+      .wingame {
+        background: url("./../../assets/gassgame/wingame.png") no-repeat center;
+        background-size: 100% 100%;
+        width: 2.04rem;
+        height: 0.8rem;
+      }
+      .up {
+        background: url("./../../assets/countDown/up.png") no-repeat center;
+        background-size: 100% 100%;
+        width: 2.04rem;
+        height: 0.8rem;
+        font-size: 0.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    .myMessage {
+      background: url("./../../assets/gassgame/myMessage.png") no-repeat center;
+      background-size: 100% 100%;
+      width: 1.76rem;
+      height: 0.67rem;
+      margin: 0 auto 0.2rem;
+    }
+    .wingame {
       background: url("./../../assets/gassgame/wingame.png") no-repeat center;
       background-size: 100% 100%;
       width: 2.04rem;
       height: 0.8rem;
-
-    }
-        .up {
-      background: url("./../../assets/countDown/up.png") no-repeat center;
-      background-size: 100% 100%;
-      width: 2.04rem;
-      height: 0.8rem;
-     font-size: .5rem;
-      display: flex;
-      justify-content: center;
-      align-items: center
-    }
-    }
-         .wingame {
-      background: url("./../../assets/gassgame/wingame.png") no-repeat center;
-      background-size: 100% 100%;
-      width: 2.04rem;
-      height: 0.8rem;
-      margin: 0 auto
-
+      margin: 0 auto;
     }
     .lookImg {
       background: url("./../../assets/gassgame/lookImg.png") no-repeat center;
@@ -411,7 +425,7 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10;
+  z-index: 990;
 }
 .alertMsg {
   width: 5.3rem;
@@ -433,7 +447,7 @@ p {
   margin: 2rem auto 0;
   display: block;
 }
-.win{
+.win {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -478,8 +492,8 @@ p {
     -moz-transform: rotate(360deg);
   }
 }
-.ppd{
-  width: .88rem;
+.ppd {
+  width: 0.88rem;
   height: 1.56rem;
   position: absolute;
   right: 0;

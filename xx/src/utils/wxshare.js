@@ -2,7 +2,7 @@ import wx from "weixin-js-sdk";
 //    随机数
 export function randomString(len) {
   　　len = len || 32;
-  　　var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';   
+  　　var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
 /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
   　　var maxPos = $chars.length;
   　　var pwd = '';
@@ -183,7 +183,7 @@ else str += tab.charAt((triplet >> 6 * (3 - j)) & 0x3F);
 }
 }
 return str;
-} 
+}
 // var imgUrl =  'http://cdn-app-qn.colorv.cn/img/test/f511d8de5f770e35b1e6ba681115e0476b0a9e807d7c3-Xle0kk_fw658_36cfdf43fbe1c09187046ba228acb0c9.jpg'
 
 

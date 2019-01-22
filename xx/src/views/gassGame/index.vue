@@ -163,11 +163,11 @@ export default {
     wxtoken(code) {
       Indicator.open()
       let data = { code };
-      // wx_token(data).then(res => {
-      //   this.userMsg.is_new_user = res.is_new_user;
-      //   this.userMsg.open_id = res.open_id;
-      //   cookie.set('open_id',res.open_id);
-      // });
+      wx_token(data).then(res => {
+        this.userMsg.is_new_user = res.is_new_user;
+        this.userMsg.open_id = res.open_id;
+        cookie.set('open_id',res.open_id);
+      });
       let that = this;
       axios
         .get("/api/api/users/get_access_token", {
@@ -291,11 +291,8 @@ p {
 #video {
   position: absolute;
   left: 0;
-//   width: 7.5rem;
-// <<<<<<< HEAD
-//   height: 100%;
-//   z-index: 6666;
-// =======
+  width:7.5rem;
+
   height: 100vh;
   z-index: -1;
 }

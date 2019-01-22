@@ -26,7 +26,7 @@ export function urlMsg(){
       result[temp[0]] = temp[1];
       }
       }
-      return result 
+      return result
   }
 
 //   唤醒app
@@ -56,7 +56,7 @@ try {
     if(sUserAgent.indexOf(' qq')>-1 && sUserAgent.indexOf('mqqbrowser') <0){
         if(sUserAgent.indexOf('iphone') > -1 || sUserAgent.indexOf('mac') > -1){
             // longurl = "https://itunes.apple.com/app/id1415668749";
-            window.location.href = longurl;  
+            window.location.href = longurl; 
         }else{
             window.location.href = longurl;
             // alert('请在点击右上角，在浏览器中打开！')
@@ -64,7 +64,7 @@ try {
     }else{
         // 浏览器打开
         openAppInBrower(longurl);
-    } 
+    }
   }
 }
 catch (e) {
@@ -80,9 +80,9 @@ function openAppInBrower(longurl) {
             openbyIframe(longurl);
         }
     } else {
-        openbyIframe(longurl);   
+        openbyIframe(longurl);
         }
-      
+
 }
 // 下载，
 export function downloadAPPClick() {
@@ -100,7 +100,7 @@ export function downloadAPPClick() {
         setTimeout(function(){
             window.location.href = iosdownurl;
         },2000)
-       
+
     }else {
         // 邀请页面下载地址不同；所以要进行判断
         if(istrue == ''||istrue ==false){
@@ -108,14 +108,14 @@ export function downloadAPPClick() {
         goapps("wehaicao://")
         setTimeout(() => {
          window.location.href = androiddownurl;
-        }, 2000);   
+        }, 2000);
         }else{
             goapps("wehaicao://")
             setTimeout(() => {
              window.location.href = androiddownurlyaoqing;
-            }, 2000);   
+            }, 2000);
         }
-      
+
     }
   }
   function openbyIframe(longurl) {
@@ -126,7 +126,7 @@ export function downloadAPPClick() {
        setTimeout(function () {
            document.body.removeChild(ifr);
        }, 2000);
-  
+
 }
 // 判断是否为安卓得微信内打开
  export function weChat2and(){
@@ -138,19 +138,19 @@ export function downloadAPPClick() {
     }else{
         return false
     }
-     
+
 }
 // 禁止滚动
-export function bodyScroll(event){  
-    event.preventDefault();  
-} 
+export function bodyScroll(event){
+    event.preventDefault();
+}
 export function goAddDownYingYongBao () {
     if (isIOS) {
         goapps("wehaicao://")
         setTimeout(function(){
             window.location.href = iosdownurl;
         },2000)
-       
+
     }else {
         goapps("wehaicao://")
         setTimeout(() => {
